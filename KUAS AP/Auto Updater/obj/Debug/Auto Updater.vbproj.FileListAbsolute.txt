@@ -1,0 +1,11 @@
+D:\Project\Visual Studio 2013\KUAS AP\Auto Updater\bin\Debug\Auto Updater.exe.config
+D:\Project\Visual Studio 2013\KUAS AP\Auto Updater\bin\Debug\Auto Updater.exe
+D:\Project\Visual Studio 2013\KUAS AP\Auto Updater\bin\Debug\Auto Updater.pdb
+D:\Project\Visual Studio 2013\KUAS AP\Auto Updater\bin\Debug\Auto Updater.xml
+D:\Project\Visual Studio 2013\KUAS AP\Auto Updater\bin\Debug\Newtonsoft.Json.dll
+D:\Project\Visual Studio 2013\KUAS AP\Auto Updater\obj\Debug\Auto_Updater.AutoUpdater.resources
+D:\Project\Visual Studio 2013\KUAS AP\Auto Updater\obj\Debug\Auto_Updater.Resources.resources
+D:\Project\Visual Studio 2013\KUAS AP\Auto Updater\obj\Debug\Auto Updater.vbproj.GenerateResource.Cache
+D:\Project\Visual Studio 2013\KUAS AP\Auto Updater\obj\Debug\Auto Updater.exe
+D:\Project\Visual Studio 2013\KUAS AP\Auto Updater\obj\Debug\Auto Updater.xml
+D:\Project\Visual Studio 2013\KUAS AP\Auto Updater\obj\Debug\Auto Updater.pdb
