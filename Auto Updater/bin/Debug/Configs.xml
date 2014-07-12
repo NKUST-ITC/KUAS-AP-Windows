@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfConfig xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Config>
+    <Account>1101107151</Account>
+    <Pwd />
+    <Remember>false</Remember>
+    <Manager>8ae4532d-6e87-454b-ad28-641a25d1c617</Manager>
+  </Config>
+</ArrayOfConfig>

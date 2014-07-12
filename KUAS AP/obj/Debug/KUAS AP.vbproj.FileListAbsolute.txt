@@ -1,0 +1,17 @@
+D:\Project\Visual Studio 2013\KUAS AP\KUAS AP\bin\Debug\KUAS AP.exe.config
+D:\Project\Visual Studio 2013\KUAS AP\KUAS AP\bin\Debug\KUAS AP.exe
+D:\Project\Visual Studio 2013\KUAS AP\KUAS AP\bin\Debug\KUAS AP.pdb
+D:\Project\Visual Studio 2013\KUAS AP\KUAS AP\bin\Debug\KUAS AP.xml
+D:\Project\Visual Studio 2013\KUAS AP\KUAS AP\bin\Debug\HtmlAgilityPack.dll
+D:\Project\Visual Studio 2013\KUAS AP\KUAS AP\bin\Debug\HtmlAgilityPack.pdb
+D:\Project\Visual Studio 2013\KUAS AP\KUAS AP\bin\Debug\HtmlAgilityPack.xml
+D:\Project\Visual Studio 2013\KUAS AP\KUAS AP\obj\Debug\KUAS_AP.Loginfrm.resources
+D:\Project\Visual Studio 2013\KUAS AP\KUAS AP\obj\Debug\KUAS_AP.Resources.resources
+D:\Project\Visual Studio 2013\KUAS AP\KUAS AP\obj\Debug\KUAS AP.vbproj.GenerateResource.Cache
+D:\Project\Visual Studio 2013\KUAS AP\KUAS AP\obj\Debug\KUAS AP.exe
+D:\Project\Visual Studio 2013\KUAS AP\KUAS AP\obj\Debug\KUAS AP.xml
+D:\Project\Visual Studio 2013\KUAS AP\KUAS AP\obj\Debug\KUAS AP.pdb
+D:\Project\Visual Studio 2013\KUAS AP\KUAS AP\bin\Debug\Newtonsoft.Json.dll
+D:\Project\Visual Studio 2013\KUAS AP\KUAS AP\obj\Debug\KUAS_AP.AP_Frm.resources
+D:\Project\Visual Studio 2013\KUAS AP\KUAS AP\obj\Debug\KUAS_AP.Json.resources
+D:\Project\Visual Studio 2013\KUAS AP\KUAS AP\obj\Debug\KUAS AP.vbprojResolveAssemblyReference.cache
