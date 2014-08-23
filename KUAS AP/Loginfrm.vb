@@ -96,7 +96,7 @@ Public Class Loginfrm
             Dim parameters As IDictionary(Of String, String) = New Dictionary(Of String, String)()
             parameters.Add("uid", userName)
             parameters.Add("pwd", password)
-            Dim response As HttpWebResponse = HttpWebResponseUtility.CreatePostHttpResponse("http://140.127.113.227/kuas/perchk.jsp", parameters, Nothing, Nothing, Encoding.UTF8, cookies)
+            Dim response As HttpWebResponse = HttpWebResponseUtility.CreatePostHttpResponse("http://140.127.113.231/kuas/perchk.jsp", parameters, Nothing, Nothing, Encoding.UTF8, cookies)
             Dim reader As StreamReader = New StreamReader(response.GetResponseStream, System.Text.Encoding.GetEncoding("UTF-8"))
             Dim respHTML As String = reader.ReadToEnd()
             'If respHTML.Contains("script") Then
@@ -108,15 +108,16 @@ Public Class Loginfrm
             'End If
 
             parameters.Clear()
-            response = HttpWebResponseUtility.CreateGetHttpResponse("http://140.127.113.227/kuas/f_head.jsp", Nothing, Nothing, cookies)
+            response = HttpWebResponseUtility.CreateGetHttpResponse("http://140.127.113.231/kuas/f_head.jsp", Nothing, Nothing, cookies)
             reader = New StreamReader(response.GetResponseStream, System.Text.Encoding.GetEncoding("UTF-8"))
             respHTML = reader.ReadToEnd()
 
             Dim doc As New HtmlDocument()
             doc.LoadHtml(respHTML)
             Dim node As HtmlNode = doc.DocumentNode
+
             Try
-                Me.Text = "KUAS AP (By Silent) @ " & WebUtility.HtmlDecode(node.SelectNodes("//table[1]/tr/td[3]/font[3]")(0).InnerText)
+                Me.Text = "KUAS AP (By Silent) @ " & WebUtility.HtmlDecode(node.SelectNodes("/html/body/div[1]/div/div[3]/span[3]")(0).InnerText)
             Catch ex As Exception
                 MsgBox("登入失敗 , 請在嘗試一次 !", MsgBoxStyle.Critical)
                 User.Enabled = True

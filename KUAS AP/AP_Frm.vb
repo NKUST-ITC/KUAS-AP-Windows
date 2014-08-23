@@ -166,6 +166,7 @@ Public Class AP_Frm
                 Else
                     yms = Now.Year - 1911
                 End If
+                If Val(ScoreSemester.Items.Item(0).ToString.Split(",")(0)) > yms Then : yms = Val(ScoreSemester.Items.Item(0).ToString.Split(",")(0)) : End If
                 For i = 0 To ScoreSemester.Items.Count - 1
                     If Val(yms - (StudentGrade - 1)) <= Val(ScoreSemester.Items.Item(i).ToString.Split(",")(0)) And Val(ScoreSemester.Items.Item(i).ToString.Split(",")(0)) <= yms Then
                         CreditTotalCount += 1
@@ -258,7 +259,7 @@ Public Class AP_Frm
             Dim parameters As IDictionary(Of String, String) = New Dictionary(Of String, String)()
             parameters.Add("uid", userName)
             parameters.Add("pwd", password)
-            Dim response As HttpWebResponse = HttpWebResponseUtility.CreatePostHttpResponse("http://140.127.113.227/kuas/perchk.jsp", parameters, Nothing, Nothing, Encoding.UTF8, cookies)
+            Dim response As HttpWebResponse = HttpWebResponseUtility.CreatePostHttpResponse("http://140.127.113.231/kuas/perchk.jsp", parameters, Nothing, Nothing, Encoding.UTF8, cookies)
             Dim reader As StreamReader = New StreamReader(response.GetResponseStream, System.Text.Encoding.GetEncoding("UTF-8"))
             Dim respHTML As String = reader.ReadToEnd()
             'If respHTML.Contains("script") Then
@@ -267,7 +268,7 @@ Public Class AP_Frm
             'End If
 
             parameters.Clear()
-            response = HttpWebResponseUtility.CreateGetHttpResponse("http://140.127.113.227/kuas/f_head.jsp", Nothing, Nothing, cookies)
+            response = HttpWebResponseUtility.CreateGetHttpResponse("http://140.127.113.231/kuas/f_head.jsp", Nothing, Nothing, cookies)
             reader = New StreamReader(response.GetResponseStream, System.Text.Encoding.GetEncoding("UTF-8"))
             respHTML = reader.ReadToEnd()
 
@@ -276,8 +277,8 @@ Public Class AP_Frm
             Dim node As HtmlNode = doc.DocumentNode
 
             Try
-                TranGrade(WebUtility.HtmlDecode(node.SelectNodes("//table[1]/tr/td[3]/font[2]")(0).InnerText))
-                Me.Text = "KUAS AP (By Silent) @ " & WebUtility.HtmlDecode(node.SelectNodes("//table[1]/tr/td[3]/font[3]")(0).InnerText)
+                TranGrade(WebUtility.HtmlDecode(node.SelectNodes("/html/body/div[1]/div/div[3]/span[2]")(0).InnerText))
+                Me.Text = "KUAS AP (By Silent) @ " & WebUtility.HtmlDecode(node.SelectNodes("/html/body/div[1]/div/div[3]/span[3]")(0).InnerText)
             Catch ex As Exception
                 MsgBox("系統抓取異常 , 請稍後再試 :)", MsgBoxStyle.Critical, "Opps ! Something Error :(")
                 End
@@ -348,7 +349,7 @@ Public Class AP_Frm
                 parameters.Add("local_ip", "")
                 parameters.Add("online", "okey")
                 parameters.Add("loginid", userName)
-                response = HttpWebResponseUtility.CreatePostHttpResponse("http://140.127.113.227/kuas/fnc.jsp", parameters, Nothing, Nothing, Encoding.UTF8, cookies)
+                response = HttpWebResponseUtility.CreatePostHttpResponse("http://140.127.113.231/kuas/fnc.jsp", parameters, Nothing, Nothing, Encoding.UTF8, cookies)
                 reader = New StreamReader(response.GetResponseStream, System.Text.Encoding.GetEncoding("UTF-8"))
                 respHTML = reader.ReadToEnd()
                 response.Close()
@@ -369,7 +370,7 @@ Public Class AP_Frm
                 parameters.Add("arg06", "")
                 parameters.Add("uid", userName)
                 parameters.Add("ls_randnum", ls_randnum)
-                response = HttpWebResponseUtility.CreatePostHttpResponse("http://140.127.113.227/kuas/system/sys001_00.jsp?spath=ag_pro/ag222.jsp?", parameters, Nothing, Nothing, Encoding.UTF8, cookies)
+                response = HttpWebResponseUtility.CreatePostHttpResponse("http://140.127.113.231/kuas/system/sys001_00.jsp?spath=ag_pro/ag222.jsp?", parameters, Nothing, Nothing, Encoding.UTF8, cookies)
                 reader = New StreamReader(response.GetResponseStream, System.Text.Encoding.GetEncoding("UTF-8"))
                 respHTML = reader.ReadToEnd()
 
@@ -393,6 +394,7 @@ Public Class AP_Frm
         End While
     End Sub
     Sub RefreshClass()
+        ClassSemesterCombobox.Enabled = False
         Dim ErrorCount As Integer = 0
         If ClassCheck = True Or ClassReady = False Then
             Exit Sub
@@ -432,7 +434,7 @@ Public Class AP_Frm
                 'parameters.Add("local_ip", "")
                 'parameters.Add("online", "okey")
                 'parameters.Add("loginid", userName)
-                'response = HttpWebResponseUtility.CreatePostHttpResponse("http://140.127.113.227/kuas/fnc.jsp", parameters, Nothing, Nothing, Encoding.UTF8, cookies)
+                'response = HttpWebResponseUtility.CreatePostHttpResponse("http://140.127.113.231/kuas/fnc.jsp", parameters, Nothing, Nothing, Encoding.UTF8, cookies)
                 'reader = New StreamReader(response.GetResponseStream, System.Text.Encoding.GetEncoding("UTF-8"))
                 'respHTML = reader.ReadToEnd()
                 'doc.LoadHtml(respHTML)
@@ -456,7 +458,7 @@ Public Class AP_Frm
                     End If
                 End If
                 parameters.Add("spath", "ag_pro%2Fag222.jsp%3F")
-                response = HttpWebResponseUtility.CreatePostHttpResponse("http://140.127.113.227/kuas/ag_pro/ag222.jsp", parameters, Nothing, Nothing, Encoding.UTF8, cookies)
+                response = HttpWebResponseUtility.CreatePostHttpResponse("http://140.127.113.231/kuas/ag_pro/ag222.jsp", parameters, Nothing, Nothing, Encoding.UTF8, cookies)
                 reader = New StreamReader(response.GetResponseStream, System.Text.Encoding.GetEncoding("UTF-8"))
                 respHTML = reader.ReadToEnd()
                 'Debug.Print(respHTML)
@@ -464,7 +466,7 @@ Public Class AP_Frm
                     MsgBox("查無資料 !", MsgBoxStyle.Exclamation)
                     ClassCheck = False
                     ClassFirst = True
-                    Exit Sub
+                    Exit While
                 End If
                 response.Close()
 
@@ -541,7 +543,7 @@ FindH:
                 ClassCheck = False
                 ClassFirst = True
                 response.Close()
-                Exit Sub
+                Exit While
 DontOpen:
                 Me.Size = New Point(FrmX, Me.Size.Height)
                 AddNewClassItem("M", WebUtility.HtmlDecode(node.SelectNodes("//table[2]/tr[2]/td[2]")(0).InnerHtml.Split("<br>")(0)), WebUtility.HtmlDecode(node.SelectNodes("//table[2]/tr[2]/td[3]")(0).InnerHtml.Split("<br>")(0)), WebUtility.HtmlDecode(node.SelectNodes("//table[2]/tr[2]/td[4]")(0).InnerHtml.Split("<br>")(0)), WebUtility.HtmlDecode(node.SelectNodes("//table[2]/tr[2]/td[5]")(0).InnerHtml.Split("<br>")(0)), WebUtility.HtmlDecode(node.SelectNodes("//table[2]/tr[2]/td[6]")(0).InnerHtml.Split("<br>")(0)))
@@ -557,13 +559,14 @@ DontOpen:
                 ClassCheck = False
                 ClassFirst = True
                 response.Close()
-                Exit Sub
+                Exit While
             Catch ex As Exception
                 'MsgBox("暫時無法查詢課表 , 請稍後再試 !", MsgBoxStyle.Critical)
                 'ClassCheck = False
                 ClassFirst = True
             End Try
         End While
+        ClassSemesterCombobox.Enabled = True
     End Sub
     Sub AddNewScoreItem(Subject As String, Teacher As String, Score As String, Alert As String, AlertCause As String, YearScore As String)
         Subject = Subject.Trim()
@@ -610,7 +613,7 @@ DontOpen:
                 parameters.Add("local_ip", "")
                 parameters.Add("online", "okey")
                 parameters.Add("loginid", userName)
-                response = HttpWebResponseUtility.CreatePostHttpResponse("http://140.127.113.227/kuas/fnc.jsp", parameters, Nothing, Nothing, Encoding.UTF8, cookies)
+                response = HttpWebResponseUtility.CreatePostHttpResponse("http://140.127.113.231/kuas/fnc.jsp", parameters, Nothing, Nothing, Encoding.UTF8, cookies)
                 reader = New StreamReader(response.GetResponseStream, System.Text.Encoding.GetEncoding("UTF-8"))
                 respHTML = reader.ReadToEnd()
                 response.Close()
@@ -631,7 +634,7 @@ DontOpen:
                 parameters.Add("arg06", "")
                 parameters.Add("uid", userName)
                 parameters.Add("ls_randnum", ls_randnum)
-                response = HttpWebResponseUtility.CreatePostHttpResponse("http://140.127.113.227/kuas/system/sys001_00.jsp?spath=ag_pro/ag008.jsp?", parameters, Nothing, Nothing, Encoding.UTF8, cookies)
+                response = HttpWebResponseUtility.CreatePostHttpResponse("http://140.127.113.231/kuas/system/sys001_00.jsp?spath=ag_pro/ag008.jsp?", parameters, Nothing, Nothing, Encoding.UTF8, cookies)
                 reader = New StreamReader(response.GetResponseStream, System.Text.Encoding.GetEncoding("UTF-8"))
                 respHTML = reader.ReadToEnd()
                 HtmlAgilityPack.HtmlNode.ElementsFlags.Remove("option")
@@ -654,6 +657,7 @@ DontOpen:
         End While
     End Sub
     Sub RefreshScore()
+        ScoreSemesterCombobox.Enabled = False
         Dim ErrorCount As Integer = 0
         If ScoreCheck = True Or ScoreReady = False Then
             Exit Sub
@@ -697,7 +701,7 @@ DontOpen:
                 parameters.Add("local_ip", "")
                 parameters.Add("online", "okey")
                 parameters.Add("loginid", userName)
-                response = HttpWebResponseUtility.CreatePostHttpResponse("http://140.127.113.227/kuas/fnc.jsp", parameters, Nothing, Nothing, Encoding.UTF8, cookies)
+                response = HttpWebResponseUtility.CreatePostHttpResponse("http://140.127.113.231/kuas/fnc.jsp", parameters, Nothing, Nothing, Encoding.UTF8, cookies)
                 reader = New StreamReader(response.GetResponseStream, System.Text.Encoding.GetEncoding("UTF-8"))
                 respHTML = reader.ReadToEnd()
                 Dim doc As New HtmlDocument()
@@ -723,7 +727,7 @@ DontOpen:
                     End If
                 End If
                 parameters.Add("spath", "ag_pro/ag008.jsp?")
-                Dim responsex As HttpWebResponse = HttpWebResponseUtility.CreatePostHttpResponse("http://140.127.113.227/kuas/ag_pro/ag008.jsp", parameters, Nothing, Nothing, Encoding.UTF8, cookies)
+                Dim responsex As HttpWebResponse = HttpWebResponseUtility.CreatePostHttpResponse("http://140.127.113.231/kuas/ag_pro/ag008.jsp", parameters, Nothing, Nothing, Encoding.UTF8, cookies)
                 Dim readerx As StreamReader = New StreamReader(responsex.GetResponseStream, System.Text.Encoding.GetEncoding("UTF-8"))
                 Dim respHTMLx = readerx.ReadToEnd()
 
@@ -731,7 +735,7 @@ DontOpen:
                     MsgBox("查無資料 !", MsgBoxStyle.Exclamation)
                     ScoreCheck = False
                     ScoreFirst = True
-                    Exit Sub
+                    Exit While
                 End If
                 response.Close()
 
@@ -811,7 +815,7 @@ DontOpen:
                     parameters.Add("arg06", "")
                     parameters.Add("uid", userName)
                     parameters.Add("ls_randnum", ls_randnum)
-                    response = HttpWebResponseUtility.CreatePostHttpResponse("http://140.127.113.227/kuas/ag_pro/ag009.jsp?", parameters, Nothing, Nothing, Encoding.UTF8, cookies)
+                    response = HttpWebResponseUtility.CreatePostHttpResponse("http://140.127.113.231/kuas/ag_pro/ag009.jsp?", parameters, Nothing, Nothing, Encoding.UTF8, cookies)
                     reader = New StreamReader(response.GetResponseStream, System.Text.Encoding.GetEncoding("UTF-8"))
                     respHTML = reader.ReadToEnd()
 
@@ -857,7 +861,7 @@ DontOpen:
                         End If
                     End If
                     parameters.Add("spath", "ag_pro%2Fag222.jsp%3F")
-                    response = HttpWebResponseUtility.CreatePostHttpResponse("http://140.127.113.227/kuas/ag_pro/ag222.jsp", parameters, Nothing, Nothing, Encoding.UTF8, cookies)
+                    response = HttpWebResponseUtility.CreatePostHttpResponse("http://140.127.113.231/kuas/ag_pro/ag222.jsp", parameters, Nothing, Nothing, Encoding.UTF8, cookies)
                     reader = New StreamReader(response.GetResponseStream, System.Text.Encoding.GetEncoding("UTF-8"))
                     respHTML = reader.ReadToEnd()
 
@@ -907,7 +911,7 @@ DontOpen:
                     If FluckOutCount = 0 Then
                         MsgBox("恭喜你歐趴 !", MsgBoxStyle.Information, ScoreSemesterCombobox.Items.Item(ScoreSemesterCombobox.SelectedIndex).ToString)
                     Else
-                        
+
                         If TotalFluckOutCredit > TotalCredit * 2 / 3 Then
                             MsgBox("被當" & FluckOutCount & "科 , 合計" & TotalFluckOutCredit & "學分 !" & vbCrLf & "已達三二標準 !", MsgBoxStyle.Critical, ScoreSemesterCombobox.Items.Item(ScoreSemesterCombobox.SelectedIndex).ToString.Trim)
                         ElseIf TotalFluckOutCredit > TotalCredit / 2 Then
@@ -915,7 +919,7 @@ DontOpen:
                         Else
                             MsgBox("被當" & FluckOutCount & "科 , 合計" & TotalFluckOutCredit & "學分 !" & vbCrLf & "恭喜你未達二一標準 !", MsgBoxStyle.Information, ScoreSemesterCombobox.Items.Item(ScoreSemesterCombobox.SelectedIndex).ToString.Trim)
                         End If
-                        End If
+                    End If
                 End If
                 Exit While
             Catch ex As Exception
@@ -925,6 +929,7 @@ DontOpen:
                 ScoreFirst = True
             End Try
         End While
+        ScoreSemesterCombobox.Enabled = True
     End Sub
     Function TranAbsent(Item As String)
         Select Case Item
@@ -986,7 +991,7 @@ DontOpen:
                 parameters.Add("local_ip", "")
                 parameters.Add("online", "okey")
                 parameters.Add("loginid", userName)
-                response = HttpWebResponseUtility.CreatePostHttpResponse("http://140.127.113.227/kuas/fnc.jsp", parameters, Nothing, Nothing, Encoding.UTF8, cookies)
+                response = HttpWebResponseUtility.CreatePostHttpResponse("http://140.127.113.231/kuas/fnc.jsp", parameters, Nothing, Nothing, Encoding.UTF8, cookies)
                 reader = New StreamReader(response.GetResponseStream, System.Text.Encoding.GetEncoding("UTF-8"))
                 respHTML = reader.ReadToEnd()
                 Dim doc As New HtmlDocument()
@@ -1006,7 +1011,7 @@ DontOpen:
                 parameters.Add("arg06", "")
                 parameters.Add("uid", userName)
                 parameters.Add("ls_randnum", ls_randnum)
-                response = HttpWebResponseUtility.CreatePostHttpResponse("http://140.127.113.227/kuas/system/sys001_00.jsp?spath=ak_pro/ak002_01.jsp?", parameters, Nothing, Nothing, Encoding.UTF8, cookies)
+                response = HttpWebResponseUtility.CreatePostHttpResponse("http://140.127.113.231/kuas/system/sys001_00.jsp?spath=ak_pro/ak002_01.jsp?", parameters, Nothing, Nothing, Encoding.UTF8, cookies)
                 reader = New StreamReader(response.GetResponseStream, System.Text.Encoding.GetEncoding("UTF-8"))
                 respHTML = reader.ReadToEnd()
                 HtmlAgilityPack.HtmlNode.ElementsFlags.Remove("option")
@@ -1029,6 +1034,7 @@ DontOpen:
         End While
     End Sub
     Sub RefreshAbsent()
+        AbsentSemesterCombobox.Enabled = False
         Dim ErrorCount As Integer = 0
         If AbsentCheck = True Or AbsentReady = False Then
             Exit Sub
@@ -1049,7 +1055,7 @@ DontOpen:
                 Dim respHTML As String
 
                 Dim doc As New HtmlDocument()
-               
+
                 parameters.Clear()
                 If Not ymsAbsent = Nothing Then
                     parameters.Add("yms", System.Uri.EscapeDataString(ymsAbsent))
@@ -1067,7 +1073,7 @@ DontOpen:
                     End If
                 End If
                 parameters.Add("spath", "ak_pro%2Fak002_01.jsp%3F")
-                response = HttpWebResponseUtility.CreatePostHttpResponse("http://140.127.113.227/kuas/ak_pro/ak002_01.jsp", parameters, Nothing, Nothing, Encoding.UTF8, cookies)
+                response = HttpWebResponseUtility.CreatePostHttpResponse("http://140.127.113.231/kuas/ak_pro/ak002_01.jsp", parameters, Nothing, Nothing, Encoding.UTF8, cookies)
                 reader = New StreamReader(response.GetResponseStream, System.Text.Encoding.GetEncoding("UTF-8"))
                 respHTML = reader.ReadToEnd()
 
@@ -1075,7 +1081,7 @@ DontOpen:
                     MsgBox("查無資料 !", MsgBoxStyle.Exclamation)
                     AbsentCheck = False
                     AbsentFirst = True
-                    Exit Sub
+                    Exit While
                 End If
 
                 'Debug.Print(respHTML)
@@ -1096,6 +1102,7 @@ DontOpen:
                 ErrorCount += 1
             End Try
         End While
+        AbsentSemesterCombobox.Enabled = True
     End Sub
 
     Private Sub ClassSemesterCombobox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ClassSemesterCombobox.SelectedIndexChanged
@@ -1210,7 +1217,7 @@ DontOpen:
                 parameters.Add("local_ip", "")
                 parameters.Add("online", "okey")
                 parameters.Add("loginid", userName)
-                response = HttpWebResponseUtility.CreatePostHttpResponse("http://140.127.113.227/kuas/fnc.jsp", parameters, Nothing, Nothing, Encoding.UTF8, cookies)
+                response = HttpWebResponseUtility.CreatePostHttpResponse("http://140.127.113.231/kuas/fnc.jsp", parameters, Nothing, Nothing, Encoding.UTF8, cookies)
                 reader = New StreamReader(response.GetResponseStream, System.Text.Encoding.GetEncoding("UTF-8"))
                 respHTML = reader.ReadToEnd()
                 Dim doc As New HtmlDocument()
@@ -1229,7 +1236,7 @@ DontOpen:
                     Exit While
                 End If
                 parameters.Add("spath", "ag_pro/ag008.jsp?")
-                Dim responsex As HttpWebResponse = HttpWebResponseUtility.CreatePostHttpResponse("http://140.127.113.227/kuas/ag_pro/ag008.jsp", parameters, Nothing, Nothing, Encoding.UTF8, cookies)
+                Dim responsex As HttpWebResponse = HttpWebResponseUtility.CreatePostHttpResponse("http://140.127.113.231/kuas/ag_pro/ag008.jsp", parameters, Nothing, Nothing, Encoding.UTF8, cookies)
                 Dim readerx As StreamReader = New StreamReader(responsex.GetResponseStream, System.Text.Encoding.GetEncoding("UTF-8"))
                 Dim respHTMLx = readerx.ReadToEnd()
 
@@ -1330,7 +1337,7 @@ DontOpen:
                     End If
                 End If
                 parameters.Add("spath", "ag_pro%2Fag222.jsp%3F")
-                response = HttpWebResponseUtility.CreatePostHttpResponse("http://140.127.113.227/kuas/ag_pro/ag222.jsp", parameters, Nothing, Nothing, Encoding.UTF8, cookies)
+                response = HttpWebResponseUtility.CreatePostHttpResponse("http://140.127.113.231/kuas/ag_pro/ag222.jsp", parameters, Nothing, Nothing, Encoding.UTF8, cookies)
                 reader = New StreamReader(response.GetResponseStream, System.Text.Encoding.GetEncoding("UTF-8"))
                 respHTML = reader.ReadToEnd()
 
