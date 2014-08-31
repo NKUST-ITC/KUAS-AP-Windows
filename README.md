@@ -4,11 +4,11 @@ About
 要安裝IE Tab擴充元件才能使用                 
 當IE版本太高又碰到相容性問題               
 無法正常瀏覽校務系統                      
-                   
-為了解決此問題                      
+                                     
+為了解決此問題                                 
 於是誕生了電腦版非官方校務系統                     
-                  
-[新版校務系統][http://140.127.113.231/kuas/index.html]在103/8/4上線                  
+                               
+[新版校務系統](http://140.127.113.231/kuas/index.html)在103/8/4上線                  
 目前已可以支援Internet Explorer、Google Chrome、Mozilla Firefox、Safari瀏覽器。                
 介面也變得比較好看                   
                  
@@ -21,15 +21,15 @@ About
 How to use ?            
 =============================               
 如果你有Compiler             
-歡迎Clone [Source Code][https://github.com/hearsilent/KUAS-AP.git]自行編譯             
+歡迎Clone [Source Code](https://github.com/hearsilent/KUAS-AP.git)自行編譯             
 工作環境 : Visual Studio 2013                
 
 如果你有更好的想法歡迎Fork             
-如果你有建議不會寫Code歡迎聯絡我                
+如果你有建議不會寫Code歡迎[聯絡我](https://www.facebook.com/HearSilent)                
   
-你也可以從這下載 : [Dropbox載點][http://goo.gl/ULNwSe] (最後更新日期 : 103/8/23)           
+你也可以從這下載 : [Dropbox載點](http://goo.gl/ULNwSe) (最後更新日期 : 103/8/23)           
 
-### .NET需求[4.0][http://www.microsoft.com/zh-tw/download/details.aspx?id=24872] (含以上)                      
+##### .NET需求[4.0](http://www.microsoft.com/zh-tw/download/details.aspx?id=24872) (含以上)                      
               
 How can this do ?               
 =============================             
@@ -41,10 +41,10 @@ How can this do ?
 Android ? iOS ?               
 =============================
 你可以使用 :
-- Android : [Google Play][https://play.google.com/store/apps/details?id=com.kuas.ap]            
-- iOS : [App Store][https://itunes.apple.com/us/app/gao-ying-xiao-wu-tong/id893131497]            
+- Android : [Google Play](https://play.google.com/store/apps/details?id=com.kuas.ap)            
+- iOS : [App Store](https://itunes.apple.com/us/app/gao-ying-xiao-wu-tong/id893131497)            
             
-Author : [Louie Lu][https://github.com/grapherd]             
+Author : [Louie Lu](https://github.com/grapherd)             
                  
 Notice            
 =============================
@@ -58,7 +58,7 @@ Notice
            
 Contact Us
 =============================
-- 手機版 : [Louie Lu][https://www.facebook.com/louie.lu.180?fref=nf]            
-- 電腦版 : [HearSilent][https://www.facebook.com/HearSilent]       
+- 手機版 : [Louie Lu](https://www.facebook.com/louie.lu.180)            
+- 電腦版 : [HearSilent](https://www.facebook.com/HearSilent)       
                  
 #自己的校務系統自己救
