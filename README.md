@@ -31,7 +31,7 @@ How to use ?
 
 ##### .NET需求[4.0](http://www.microsoft.com/zh-tw/download/details.aspx?id=24872) (含以上)                      
               
-How can this do ?               
+What can this do ?               
 =============================             
 - 期中期末成績查詢             
 - 缺曠課查詢            
@@ -61,4 +61,4 @@ Contact Us
 - 手機版 : [Louie Lu](https://www.facebook.com/louie.lu.180)            
 - 電腦版 : [HearSilent](https://www.facebook.com/HearSilent)       
                  
-#自己的校務系統自己救
+### 自己的校務系統自己救
