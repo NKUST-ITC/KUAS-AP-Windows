@@ -474,7 +474,7 @@ Public Class AP_Frm
                 Dim node As HtmlNode = doc.DocumentNode
 
                 For i = 12 To 16
-                    For j = 2 To 6
+                    For j = 2 To 8
                         If Not WebUtility.HtmlDecode(node.SelectNodes("//table[2]/tr[" & i & "]/td[" & j & "]")(0).InnerHtml.Split("<br>")(0)).Trim = "" Then
                             OpenB = True
                             GoTo FindB
@@ -730,7 +730,7 @@ DontOpen:
                 Dim responsex As HttpWebResponse = HttpWebResponseUtility.CreatePostHttpResponse("http://140.127.113.231/kuas/ag_pro/ag008.jsp", parameters, Nothing, Nothing, Encoding.UTF8, cookies)
                 Dim readerx As StreamReader = New StreamReader(responsex.GetResponseStream, System.Text.Encoding.GetEncoding("UTF-8"))
                 Dim respHTMLx = readerx.ReadToEnd()
-
+                'Debug.Print(respHTMLx)
                 If respHTMLx.Contains("無") Then
                     MsgBox("查無資料 !", MsgBoxStyle.Exclamation)
                     ScoreCheck = False
@@ -793,7 +793,7 @@ DontOpen:
                         End If
                     End If
                 End If
-
+                ymsCheck = True
                 If ymsCheck = False Then
                     parameters.Clear()
                     parameters.Add("fncid", "AG009")
@@ -825,17 +825,20 @@ DontOpen:
                     '5 老師名稱
                     '6 預警
                     '7 預警原因
-                    For i = 2 To node.SelectNodes("//table[2]/tr").Count
-                        For j = 0 To 49
-                            If GetList(j, 0) = Nothing Then : Exit For : End If
-                            If GetList(j, 0) = WebUtility.HtmlDecode(node.SelectNodes("//table[2]/tr[" & i & "]/td[3]")(0).InnerText).Trim Then
-                                GetList(j, 1) = WebUtility.HtmlDecode(node.SelectNodes("//table[2]/tr[" & i & "]/td[5]")(0).InnerText).Trim
-                                GetList(j, 2) = WebUtility.HtmlDecode(node.SelectNodes("//table[2]/tr[" & i & "]/td[6]")(0).InnerText).Trim
-                                GetList(j, 3) = WebUtility.HtmlDecode(node.SelectNodes("//table[2]/tr[" & i & "]/td[7]")(0).InnerText).Trim
-                                Exit For
-                            End If
+                    If Not respHTML.Contains("目前無學生個人成績資料") Then
+                        For i = 2 To node.SelectNodes("//table[2]/tr").Count
+                            For j = 0 To 49
+                                If GetList(j, 0) = Nothing Then : Exit For : End If
+                                If GetList(j, 0) = WebUtility.HtmlDecode(node.SelectNodes("//table[2]/tr[" & i & "]/td[3]")(0).InnerText).Trim Then
+                                    GetList(j, 1) = WebUtility.HtmlDecode(node.SelectNodes("//table[2]/tr[" & i & "]/td[5]")(0).InnerText).Trim
+                                    GetList(j, 2) = WebUtility.HtmlDecode(node.SelectNodes("//table[2]/tr[" & i & "]/td[6]")(0).InnerText).Trim
+                                    GetList(j, 3) = WebUtility.HtmlDecode(node.SelectNodes("//table[2]/tr[" & i & "]/td[7]")(0).InnerText).Trim
+                                    Exit For
+                                End If
+                            Next
                         Next
-                    Next
+                    End If
+
                     response.Close()
                     'For i = 2 To node.SelectNodes("//table[2]/tr").Count
                     '    GetList(i - 2, 0) = WebUtility.HtmlDecode(node.SelectNodes("//table[2]/tr[" & i & "]/td[3]")(0).InnerText)
@@ -864,7 +867,7 @@ DontOpen:
                     response = HttpWebResponseUtility.CreatePostHttpResponse("http://140.127.113.231/kuas/ag_pro/ag222.jsp", parameters, Nothing, Nothing, Encoding.UTF8, cookies)
                     reader = New StreamReader(response.GetResponseStream, System.Text.Encoding.GetEncoding("UTF-8"))
                     respHTML = reader.ReadToEnd()
-
+                    'Debug.Print(respHTML)
                     doc.LoadHtml(respHTML)
                     node = doc.DocumentNode
                     '3 科目名稱
@@ -1078,7 +1081,7 @@ DontOpen:
                 respHTML = reader.ReadToEnd()
 
                 If respHTML.Contains("無") Then
-                    MsgBox("查無資料 !", MsgBoxStyle.Exclamation)
+                    MsgBox("本學期無缺曠課紀錄", MsgBoxStyle.Exclamation)
                     AbsentCheck = False
                     AbsentFirst = True
                     Exit While
