@@ -27,7 +27,7 @@ How to use ?
 如果你有更好的想法歡迎Fork             
 如果你有建議不會寫Code歡迎[聯絡我](https://www.facebook.com/HearSilent)                
   
-你也可以從這下載 : [Dropbox載點](http://goo.gl/ULNwSe) (最後更新日期 : 103/8/23)           
+你也可以從這下載 : [Dropbox載點](http://goo.gl/ULNwSe) (最後更新日期 : 103/10/10)           
 
 ##### .NET需求[4.0](http://www.microsoft.com/zh-tw/download/details.aspx?id=24872) (含以上)                      
               
