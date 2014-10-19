@@ -21,7 +21,7 @@ About
 How to use ?            
 =============================               
 如果你有Compiler             
-歡迎Clone [Source Code](https://github.com/hearsilent/KUAS-AP.git)自行編譯             
+歡迎Clone [Source Code](https://github.com/kuastw/KUAS-AP-Windows.git)自行編譯             
 工作環境 : Visual Studio 2013                
 
 如果你有更好的想法歡迎Fork             
