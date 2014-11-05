@@ -51,6 +51,7 @@ Partial Class AP_Frm
         Me.ColumnHeader31 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader32 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.LogTabPage = New System.Windows.Forms.TabPage()
+        Me.AbsentSemesterCombobox = New System.Windows.Forms.ComboBox()
         Me.AbsentListView = New System.Windows.Forms.ListView()
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
@@ -68,8 +69,9 @@ Partial Class AP_Frm
         Me.ColumnHeader15 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader28 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader29 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.AbsentSemesterCombobox = New System.Windows.Forms.ComboBox()
         Me.ScoreTabPage = New System.Windows.Forms.TabPage()
+        Me.ScoreLabel = New System.Windows.Forms.Label()
+        Me.ScoreSemesterCombobox = New System.Windows.Forms.ComboBox()
         Me.MidtermListView = New System.Windows.Forms.ListView()
         Me.ColumnHeader23 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader24 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
@@ -77,9 +79,8 @@ Partial Class AP_Frm
         Me.ColumnHeader22 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader26 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader27 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ScoreSemesterCombobox = New System.Windows.Forms.ComboBox()
-        Me.ScoreLabel = New System.Windows.Forms.Label()
         Me.ClassTabPage = New System.Windows.Forms.TabPage()
+        Me.ClassSemesterCombobox = New System.Windows.Forms.ComboBox()
         Me.ClassListView = New System.Windows.Forms.ListView()
         Me.ColumnHeader16 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader17 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
@@ -89,8 +90,8 @@ Partial Class AP_Frm
         Me.ColumnHeader21 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader35 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader36 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ClassSemesterCombobox = New System.Windows.Forms.ComboBox()
         Me.TabControl = New System.Windows.Forms.TabControl()
+        Me.QuestionnaireTabPage = New System.Windows.Forms.TabPage()
         Me.BlackContextMenuStrip.SuspendLayout()
         Me.ElectiveContextMenuStrip.SuspendLayout()
         Me.TeacherContextMenuStrip.SuspendLayout()
@@ -288,6 +289,15 @@ Partial Class AP_Frm
         Me.LogTabPage.Text = "缺曠查詢"
         Me.LogTabPage.UseVisualStyleBackColor = True
         '
+        'AbsentSemesterCombobox
+        '
+        Me.AbsentSemesterCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.AbsentSemesterCombobox.FormattingEnabled = True
+        Me.AbsentSemesterCombobox.Location = New System.Drawing.Point(3, 4)
+        Me.AbsentSemesterCombobox.Name = "AbsentSemesterCombobox"
+        Me.AbsentSemesterCombobox.Size = New System.Drawing.Size(155, 24)
+        Me.AbsentSemesterCombobox.TabIndex = 4
+        '
         'AbsentListView
         '
         Me.AbsentListView.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader4, Me.ColumnHeader5, Me.ColumnHeader6, Me.ColumnHeader7, Me.ColumnHeader8, Me.ColumnHeader9, Me.ColumnHeader10, Me.ColumnHeader11, Me.ColumnHeader12, Me.ColumnHeader13, Me.ColumnHeader14, Me.ColumnHeader15, Me.ColumnHeader28, Me.ColumnHeader29})
@@ -398,15 +408,6 @@ Partial Class AP_Frm
         Me.ColumnHeader29.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         Me.ColumnHeader29.Width = 35
         '
-        'AbsentSemesterCombobox
-        '
-        Me.AbsentSemesterCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.AbsentSemesterCombobox.FormattingEnabled = True
-        Me.AbsentSemesterCombobox.Location = New System.Drawing.Point(3, 4)
-        Me.AbsentSemesterCombobox.Name = "AbsentSemesterCombobox"
-        Me.AbsentSemesterCombobox.Size = New System.Drawing.Size(155, 24)
-        Me.AbsentSemesterCombobox.TabIndex = 4
-        '
         'ScoreTabPage
         '
         Me.ScoreTabPage.Controls.Add(Me.ScoreLabel)
@@ -418,6 +419,23 @@ Partial Class AP_Frm
         Me.ScoreTabPage.TabIndex = 5
         Me.ScoreTabPage.Text = "成績查詢"
         Me.ScoreTabPage.UseVisualStyleBackColor = True
+        '
+        'ScoreLabel
+        '
+        Me.ScoreLabel.AutoSize = True
+        Me.ScoreLabel.Location = New System.Drawing.Point(164, 7)
+        Me.ScoreLabel.Name = "ScoreLabel"
+        Me.ScoreLabel.Size = New System.Drawing.Size(0, 16)
+        Me.ScoreLabel.TabIndex = 5
+        '
+        'ScoreSemesterCombobox
+        '
+        Me.ScoreSemesterCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ScoreSemesterCombobox.FormattingEnabled = True
+        Me.ScoreSemesterCombobox.Location = New System.Drawing.Point(3, 4)
+        Me.ScoreSemesterCombobox.Name = "ScoreSemesterCombobox"
+        Me.ScoreSemesterCombobox.Size = New System.Drawing.Size(155, 24)
+        Me.ScoreSemesterCombobox.TabIndex = 4
         '
         'MidtermListView
         '
@@ -470,23 +488,6 @@ Partial Class AP_Frm
         Me.ColumnHeader27.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         Me.ColumnHeader27.Width = 165
         '
-        'ScoreSemesterCombobox
-        '
-        Me.ScoreSemesterCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ScoreSemesterCombobox.FormattingEnabled = True
-        Me.ScoreSemesterCombobox.Location = New System.Drawing.Point(3, 4)
-        Me.ScoreSemesterCombobox.Name = "ScoreSemesterCombobox"
-        Me.ScoreSemesterCombobox.Size = New System.Drawing.Size(155, 24)
-        Me.ScoreSemesterCombobox.TabIndex = 4
-        '
-        'ScoreLabel
-        '
-        Me.ScoreLabel.AutoSize = True
-        Me.ScoreLabel.Location = New System.Drawing.Point(164, 7)
-        Me.ScoreLabel.Name = "ScoreLabel"
-        Me.ScoreLabel.Size = New System.Drawing.Size(0, 16)
-        Me.ScoreLabel.TabIndex = 5
-        '
         'ClassTabPage
         '
         Me.ClassTabPage.Controls.Add(Me.ClassSemesterCombobox)
@@ -497,6 +498,15 @@ Partial Class AP_Frm
         Me.ClassTabPage.TabIndex = 4
         Me.ClassTabPage.Text = "課表"
         Me.ClassTabPage.UseVisualStyleBackColor = True
+        '
+        'ClassSemesterCombobox
+        '
+        Me.ClassSemesterCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ClassSemesterCombobox.FormattingEnabled = True
+        Me.ClassSemesterCombobox.Location = New System.Drawing.Point(3, 4)
+        Me.ClassSemesterCombobox.Name = "ClassSemesterCombobox"
+        Me.ClassSemesterCombobox.Size = New System.Drawing.Size(155, 24)
+        Me.ClassSemesterCombobox.TabIndex = 3
         '
         'ClassListView
         '
@@ -561,27 +571,28 @@ Partial Class AP_Frm
         Me.ColumnHeader36.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         Me.ColumnHeader36.Width = 119
         '
-        'ClassSemesterCombobox
-        '
-        Me.ClassSemesterCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ClassSemesterCombobox.FormattingEnabled = True
-        Me.ClassSemesterCombobox.Location = New System.Drawing.Point(3, 4)
-        Me.ClassSemesterCombobox.Name = "ClassSemesterCombobox"
-        Me.ClassSemesterCombobox.Size = New System.Drawing.Size(155, 24)
-        Me.ClassSemesterCombobox.TabIndex = 3
-        '
         'TabControl
         '
         Me.TabControl.Controls.Add(Me.ClassTabPage)
         Me.TabControl.Controls.Add(Me.ScoreTabPage)
         Me.TabControl.Controls.Add(Me.LogTabPage)
         Me.TabControl.Controls.Add(Me.CreditTabPage)
+        Me.TabControl.Controls.Add(Me.QuestionnaireTabPage)
         Me.TabControl.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TabControl.Location = New System.Drawing.Point(0, 0)
         Me.TabControl.Name = "TabControl"
         Me.TabControl.SelectedIndex = 0
         Me.TabControl.Size = New System.Drawing.Size(660, 410)
         Me.TabControl.TabIndex = 0
+        '
+        'QuestionnaireTabPage
+        '
+        Me.QuestionnaireTabPage.Location = New System.Drawing.Point(4, 25)
+        Me.QuestionnaireTabPage.Name = "QuestionnaireTabPage"
+        Me.QuestionnaireTabPage.Size = New System.Drawing.Size(652, 381)
+        Me.QuestionnaireTabPage.TabIndex = 7
+        Me.QuestionnaireTabPage.Text = "教學評量填寫"
+        Me.QuestionnaireTabPage.UseVisualStyleBackColor = True
         '
         'AP_Frm
         '
@@ -678,4 +689,5 @@ Partial Class AP_Frm
     Friend WithEvents ColumnHeader35 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnHeader36 As System.Windows.Forms.ColumnHeader
     Friend WithEvents TabControl As System.Windows.Forms.TabControl
+    Friend WithEvents QuestionnaireTabPage As System.Windows.Forms.TabPage
 End Class

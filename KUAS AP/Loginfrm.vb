@@ -116,6 +116,24 @@ Public Class Loginfrm
             doc.LoadHtml(respHTML)
             Dim node As HtmlNode = doc.DocumentNode
 
+
+            parameters.Clear()
+            parameters.Add("UserName", userName)
+            parameters.Add("Password", password)
+            response = HttpWebResponseUtility.CreatePostHttpResponse("http://140.127.113.109/Account/LogOn?ReturnUrl=%2f", parameters, Nothing, Nothing, Encoding.UTF8, cookies)
+            reader = New StreamReader(response.GetResponseStream, System.Text.Encoding.GetEncoding("UTF-8"))
+            respHTML = reader.ReadToEnd()
+
+            Dim title As String = respHTML.Substring(respHTML.IndexOf("<title>", StringComparison.CurrentCultureIgnoreCase) + 7, respHTML.IndexOf("</title>", StringComparison.CurrentCultureIgnoreCase) - respHTML.IndexOf("<title>", StringComparison.CurrentCultureIgnoreCase) + 7)
+            Try
+                'Debug.Print(title.Split("：")(1))
+                CourseAccount = title.Split("：")(1)
+                Me.Text = "KUAS Auto Course (By Silent) @ " & title.Split("：")(1)
+            Catch ex As Exception
+                MsgBox("登入失敗。請更正錯誤後再試一次。" & vbCrLf & "所提供的使用者名稱或密碼不正確。", MsgBoxStyle.Exclamation, "Validation Summary Errors.")
+                Exit Sub
+            End Try
+
             Try
                 Me.Text = "KUAS AP (By Silent) @ " & WebUtility.HtmlDecode(node.SelectNodes("/html/body/div[1]/div/div[3]/span[3]")(0).InnerText)
             Catch ex As Exception
@@ -131,7 +149,7 @@ Public Class Loginfrm
             configs = New BindingList(Of Config)()
             configs.Add(New Config() With {.Account = User.Text, .Pwd = Encrypt(Pwd.Text, "SilentKC"), .Remember = RememberCheckBox.Checked, .Manager = Guid.NewGuid})
             XmlSerialize.SerializeToXml("Configs.xml", configs)
-            Dim Loginfrm As New AP_Frm(CourseAccount, CoursePassword, CourseUsername, Course)
+            Dim Loginfrm As New AP_Frm(CourseAccount, CoursePassword, CourseUsername, Course, cookies)
             Loginfrm.Show()
             Me.Hide()
         Catch ex As Exception
@@ -295,6 +313,13 @@ Namespace SilentWebModule
             request.Method = "POST"
             request.KeepAlive = True
             request.ContentType = "application/x-www-form-urlencoded"
+
+            If url.Contains("http://140.127.113.155/Questionnaire/QuestionnaireInsert.aspx") Then
+                request.Accept = "text/html, application/xhtml+xml, */*"
+                request.ContentType = "application/x-www-form-urlencoded"
+                request.Headers.Add("Accept-Encoding", "gzip, deflate")
+                request.Headers.Add("Accept-Language", "zh-Hant-TW,zh-Hant;q=0.5")
+            End If
 
             If Not String.IsNullOrEmpty(userAgent) Then
                 request.UserAgent = userAgent
