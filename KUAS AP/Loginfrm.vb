@@ -315,10 +315,10 @@ Namespace SilentWebModule
             request.ContentType = "application/x-www-form-urlencoded"
 
             If url.Contains("http://140.127.113.155/Questionnaire/QuestionnaireInsert.aspx") Then
-                request.Accept = "text/html, application/xhtml+xml, */*"
+                request.Accept = "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
                 request.ContentType = "application/x-www-form-urlencoded"
                 request.Headers.Add("Accept-Encoding", "gzip, deflate")
-                request.Headers.Add("Accept-Language", "zh-Hant-TW,zh-Hant;q=0.5")
+                request.Headers.Add("Accept-Language", "zh-tw,en-us;q=0.7,en;q=0.3")
             End If
 
             If Not String.IsNullOrEmpty(userAgent) Then
@@ -352,6 +352,7 @@ Namespace SilentWebModule
                     stream.Write(data, 0, data.Length)
                 End Using
             End If
+
             Return TryCast(request.GetResponse(), HttpWebResponse)
 
         End Function

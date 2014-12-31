@@ -92,6 +92,31 @@ Partial Class AP_Frm
         Me.ColumnHeader36 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.TabControl = New System.Windows.Forms.TabControl()
         Me.QuestionnaireTabPage = New System.Windows.Forms.TabPage()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.RadioButton20 = New System.Windows.Forms.RadioButton()
+        Me.RadioButton16 = New System.Windows.Forms.RadioButton()
+        Me.RadioButton17 = New System.Windows.Forms.RadioButton()
+        Me.RadioButton18 = New System.Windows.Forms.RadioButton()
+        Me.RadioButton19 = New System.Windows.Forms.RadioButton()
+        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.RadioButton15 = New System.Windows.Forms.RadioButton()
+        Me.RadioButton12 = New System.Windows.Forms.RadioButton()
+        Me.RadioButton13 = New System.Windows.Forms.RadioButton()
+        Me.RadioButton14 = New System.Windows.Forms.RadioButton()
+        Me.RadioButton11 = New System.Windows.Forms.RadioButton()
+        Me.RadioButton7 = New System.Windows.Forms.RadioButton()
+        Me.RadioButton8 = New System.Windows.Forms.RadioButton()
+        Me.RadioButton9 = New System.Windows.Forms.RadioButton()
+        Me.RadioButton10 = New System.Windows.Forms.RadioButton()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.RadioButton6 = New System.Windows.Forms.RadioButton()
+        Me.RadioButton5 = New System.Windows.Forms.RadioButton()
+        Me.RadioButton3 = New System.Windows.Forms.RadioButton()
+        Me.RadioButton4 = New System.Windows.Forms.RadioButton()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.RadioButton2 = New System.Windows.Forms.RadioButton()
+        Me.RadioButton1 = New System.Windows.Forms.RadioButton()
         Me.BlackContextMenuStrip.SuspendLayout()
         Me.ElectiveContextMenuStrip.SuspendLayout()
         Me.TeacherContextMenuStrip.SuspendLayout()
@@ -102,6 +127,11 @@ Partial Class AP_Frm
         Me.ScoreTabPage.SuspendLayout()
         Me.ClassTabPage.SuspendLayout()
         Me.TabControl.SuspendLayout()
+        Me.QuestionnaireTabPage.SuspendLayout()
+        Me.GroupBox4.SuspendLayout()
+        Me.GroupBox3.SuspendLayout()
+        Me.GroupBox2.SuspendLayout()
+        Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
         'BlackContextMenuStrip
@@ -587,12 +617,298 @@ Partial Class AP_Frm
         '
         'QuestionnaireTabPage
         '
+        Me.QuestionnaireTabPage.Controls.Add(Me.Button1)
+        Me.QuestionnaireTabPage.Controls.Add(Me.GroupBox4)
+        Me.QuestionnaireTabPage.Controls.Add(Me.GroupBox3)
+        Me.QuestionnaireTabPage.Controls.Add(Me.GroupBox2)
+        Me.QuestionnaireTabPage.Controls.Add(Me.GroupBox1)
         Me.QuestionnaireTabPage.Location = New System.Drawing.Point(4, 25)
         Me.QuestionnaireTabPage.Name = "QuestionnaireTabPage"
         Me.QuestionnaireTabPage.Size = New System.Drawing.Size(652, 381)
         Me.QuestionnaireTabPage.TabIndex = 7
         Me.QuestionnaireTabPage.Text = "教學評量填寫"
         Me.QuestionnaireTabPage.UseVisualStyleBackColor = True
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(145, 223)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(94, 40)
+        Me.Button1.TabIndex = 4
+        Me.Button1.Text = "自動填寫"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'GroupBox4
+        '
+        Me.GroupBox4.Controls.Add(Me.RadioButton20)
+        Me.GroupBox4.Controls.Add(Me.RadioButton16)
+        Me.GroupBox4.Controls.Add(Me.RadioButton17)
+        Me.GroupBox4.Controls.Add(Me.RadioButton18)
+        Me.GroupBox4.Controls.Add(Me.RadioButton19)
+        Me.GroupBox4.Location = New System.Drawing.Point(3, 167)
+        Me.GroupBox4.Name = "GroupBox4"
+        Me.GroupBox4.Size = New System.Drawing.Size(442, 50)
+        Me.GroupBox4.TabIndex = 3
+        Me.GroupBox4.TabStop = False
+        Me.GroupBox4.Text = "年級"
+        '
+        'RadioButton20
+        '
+        Me.RadioButton20.AutoSize = True
+        Me.RadioButton20.Location = New System.Drawing.Point(282, 22)
+        Me.RadioButton20.Name = "RadioButton20"
+        Me.RadioButton20.Size = New System.Drawing.Size(74, 20)
+        Me.RadioButton20.TabIndex = 4
+        Me.RadioButton20.Text = "大學延畢"
+        Me.RadioButton20.UseVisualStyleBackColor = True
+        '
+        'RadioButton16
+        '
+        Me.RadioButton16.AutoSize = True
+        Me.RadioButton16.Checked = True
+        Me.RadioButton16.Location = New System.Drawing.Point(6, 22)
+        Me.RadioButton16.Name = "RadioButton16"
+        Me.RadioButton16.Size = New System.Drawing.Size(62, 20)
+        Me.RadioButton16.TabIndex = 3
+        Me.RadioButton16.TabStop = True
+        Me.RadioButton16.Text = "一年級"
+        Me.RadioButton16.UseVisualStyleBackColor = True
+        '
+        'RadioButton17
+        '
+        Me.RadioButton17.AutoSize = True
+        Me.RadioButton17.Location = New System.Drawing.Point(74, 22)
+        Me.RadioButton17.Name = "RadioButton17"
+        Me.RadioButton17.Size = New System.Drawing.Size(62, 20)
+        Me.RadioButton17.TabIndex = 2
+        Me.RadioButton17.Text = "二年級"
+        Me.RadioButton17.UseVisualStyleBackColor = True
+        '
+        'RadioButton18
+        '
+        Me.RadioButton18.AutoSize = True
+        Me.RadioButton18.Location = New System.Drawing.Point(146, 22)
+        Me.RadioButton18.Name = "RadioButton18"
+        Me.RadioButton18.Size = New System.Drawing.Size(62, 20)
+        Me.RadioButton18.TabIndex = 1
+        Me.RadioButton18.Text = "三年級"
+        Me.RadioButton18.UseVisualStyleBackColor = True
+        '
+        'RadioButton19
+        '
+        Me.RadioButton19.AutoSize = True
+        Me.RadioButton19.Location = New System.Drawing.Point(214, 22)
+        Me.RadioButton19.Name = "RadioButton19"
+        Me.RadioButton19.Size = New System.Drawing.Size(62, 20)
+        Me.RadioButton19.TabIndex = 0
+        Me.RadioButton19.Text = "四年級"
+        Me.RadioButton19.UseVisualStyleBackColor = True
+        '
+        'GroupBox3
+        '
+        Me.GroupBox3.Controls.Add(Me.RadioButton15)
+        Me.GroupBox3.Controls.Add(Me.RadioButton12)
+        Me.GroupBox3.Controls.Add(Me.RadioButton13)
+        Me.GroupBox3.Controls.Add(Me.RadioButton14)
+        Me.GroupBox3.Controls.Add(Me.RadioButton11)
+        Me.GroupBox3.Controls.Add(Me.RadioButton7)
+        Me.GroupBox3.Controls.Add(Me.RadioButton8)
+        Me.GroupBox3.Controls.Add(Me.RadioButton9)
+        Me.GroupBox3.Controls.Add(Me.RadioButton10)
+        Me.GroupBox3.Location = New System.Drawing.Point(3, 59)
+        Me.GroupBox3.Name = "GroupBox3"
+        Me.GroupBox3.Size = New System.Drawing.Size(442, 102)
+        Me.GroupBox3.TabIndex = 2
+        Me.GroupBox3.TabStop = False
+        Me.GroupBox3.Text = "學院"
+        '
+        'RadioButton15
+        '
+        Me.RadioButton15.AutoSize = True
+        Me.RadioButton15.Location = New System.Drawing.Point(6, 74)
+        Me.RadioButton15.Name = "RadioButton15"
+        Me.RadioButton15.Size = New System.Drawing.Size(98, 20)
+        Me.RadioButton15.TabIndex = 8
+        Me.RadioButton15.TabStop = True
+        Me.RadioButton15.Text = "進修學院二技"
+        Me.RadioButton15.UseVisualStyleBackColor = True
+        '
+        'RadioButton12
+        '
+        Me.RadioButton12.AutoSize = True
+        Me.RadioButton12.Location = New System.Drawing.Point(98, 48)
+        Me.RadioButton12.Name = "RadioButton12"
+        Me.RadioButton12.Size = New System.Drawing.Size(86, 20)
+        Me.RadioButton12.TabIndex = 7
+        Me.RadioButton12.TabStop = True
+        Me.RadioButton12.Text = "進推處四技"
+        Me.RadioButton12.UseVisualStyleBackColor = True
+        '
+        'RadioButton13
+        '
+        Me.RadioButton13.AutoSize = True
+        Me.RadioButton13.Location = New System.Drawing.Point(190, 48)
+        Me.RadioButton13.Name = "RadioButton13"
+        Me.RadioButton13.Size = New System.Drawing.Size(98, 20)
+        Me.RadioButton13.TabIndex = 6
+        Me.RadioButton13.TabStop = True
+        Me.RadioButton13.Text = "進推處碩專班"
+        Me.RadioButton13.UseVisualStyleBackColor = True
+        '
+        'RadioButton14
+        '
+        Me.RadioButton14.AutoSize = True
+        Me.RadioButton14.Location = New System.Drawing.Point(294, 48)
+        Me.RadioButton14.Name = "RadioButton14"
+        Me.RadioButton14.Size = New System.Drawing.Size(98, 20)
+        Me.RadioButton14.TabIndex = 5
+        Me.RadioButton14.TabStop = True
+        Me.RadioButton14.Text = "進推處產碩班"
+        Me.RadioButton14.UseVisualStyleBackColor = True
+        '
+        'RadioButton11
+        '
+        Me.RadioButton11.AutoSize = True
+        Me.RadioButton11.Location = New System.Drawing.Point(6, 48)
+        Me.RadioButton11.Name = "RadioButton11"
+        Me.RadioButton11.Size = New System.Drawing.Size(86, 20)
+        Me.RadioButton11.TabIndex = 4
+        Me.RadioButton11.TabStop = True
+        Me.RadioButton11.Text = "進推處二技"
+        Me.RadioButton11.UseVisualStyleBackColor = True
+        '
+        'RadioButton7
+        '
+        Me.RadioButton7.AutoSize = True
+        Me.RadioButton7.Checked = True
+        Me.RadioButton7.Location = New System.Drawing.Point(6, 22)
+        Me.RadioButton7.Name = "RadioButton7"
+        Me.RadioButton7.Size = New System.Drawing.Size(86, 20)
+        Me.RadioButton7.TabIndex = 3
+        Me.RadioButton7.TabStop = True
+        Me.RadioButton7.Text = "日間部二技"
+        Me.RadioButton7.UseVisualStyleBackColor = True
+        '
+        'RadioButton8
+        '
+        Me.RadioButton8.AutoSize = True
+        Me.RadioButton8.Location = New System.Drawing.Point(98, 22)
+        Me.RadioButton8.Name = "RadioButton8"
+        Me.RadioButton8.Size = New System.Drawing.Size(86, 20)
+        Me.RadioButton8.TabIndex = 2
+        Me.RadioButton8.TabStop = True
+        Me.RadioButton8.Text = "日間部四技"
+        Me.RadioButton8.UseVisualStyleBackColor = True
+        '
+        'RadioButton9
+        '
+        Me.RadioButton9.AutoSize = True
+        Me.RadioButton9.Location = New System.Drawing.Point(190, 22)
+        Me.RadioButton9.Name = "RadioButton9"
+        Me.RadioButton9.Size = New System.Drawing.Size(98, 20)
+        Me.RadioButton9.TabIndex = 1
+        Me.RadioButton9.TabStop = True
+        Me.RadioButton9.Text = "日間部碩士班"
+        Me.RadioButton9.UseVisualStyleBackColor = True
+        '
+        'RadioButton10
+        '
+        Me.RadioButton10.AutoSize = True
+        Me.RadioButton10.Location = New System.Drawing.Point(294, 22)
+        Me.RadioButton10.Name = "RadioButton10"
+        Me.RadioButton10.Size = New System.Drawing.Size(98, 20)
+        Me.RadioButton10.TabIndex = 0
+        Me.RadioButton10.Text = "日間部博士班"
+        Me.RadioButton10.UseVisualStyleBackColor = True
+        '
+        'GroupBox2
+        '
+        Me.GroupBox2.Controls.Add(Me.RadioButton6)
+        Me.GroupBox2.Controls.Add(Me.RadioButton5)
+        Me.GroupBox2.Controls.Add(Me.RadioButton3)
+        Me.GroupBox2.Controls.Add(Me.RadioButton4)
+        Me.GroupBox2.Location = New System.Drawing.Point(107, 3)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(338, 50)
+        Me.GroupBox2.TabIndex = 1
+        Me.GroupBox2.TabStop = False
+        Me.GroupBox2.Text = "學院"
+        '
+        'RadioButton6
+        '
+        Me.RadioButton6.AutoSize = True
+        Me.RadioButton6.Location = New System.Drawing.Point(258, 22)
+        Me.RadioButton6.Name = "RadioButton6"
+        Me.RadioButton6.Size = New System.Drawing.Size(74, 20)
+        Me.RadioButton6.TabIndex = 3
+        Me.RadioButton6.Text = "管理學院"
+        Me.RadioButton6.UseVisualStyleBackColor = True
+        '
+        'RadioButton5
+        '
+        Me.RadioButton5.AutoSize = True
+        Me.RadioButton5.Location = New System.Drawing.Point(154, 22)
+        Me.RadioButton5.Name = "RadioButton5"
+        Me.RadioButton5.Size = New System.Drawing.Size(98, 20)
+        Me.RadioButton5.TabIndex = 2
+        Me.RadioButton5.Text = "人文社會學院"
+        Me.RadioButton5.UseVisualStyleBackColor = True
+        '
+        'RadioButton3
+        '
+        Me.RadioButton3.AutoSize = True
+        Me.RadioButton3.Checked = True
+        Me.RadioButton3.Location = New System.Drawing.Point(6, 22)
+        Me.RadioButton3.Name = "RadioButton3"
+        Me.RadioButton3.Size = New System.Drawing.Size(74, 20)
+        Me.RadioButton3.TabIndex = 1
+        Me.RadioButton3.TabStop = True
+        Me.RadioButton3.Text = "電資學院"
+        Me.RadioButton3.UseVisualStyleBackColor = True
+        '
+        'RadioButton4
+        '
+        Me.RadioButton4.AutoSize = True
+        Me.RadioButton4.Location = New System.Drawing.Point(86, 22)
+        Me.RadioButton4.Name = "RadioButton4"
+        Me.RadioButton4.Size = New System.Drawing.Size(62, 20)
+        Me.RadioButton4.TabIndex = 0
+        Me.RadioButton4.Text = "工學院"
+        Me.RadioButton4.UseVisualStyleBackColor = True
+        '
+        'GroupBox1
+        '
+        Me.GroupBox1.Controls.Add(Me.RadioButton2)
+        Me.GroupBox1.Controls.Add(Me.RadioButton1)
+        Me.GroupBox1.Location = New System.Drawing.Point(3, 3)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(98, 50)
+        Me.GroupBox1.TabIndex = 0
+        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = "性別"
+        '
+        'RadioButton2
+        '
+        Me.RadioButton2.AutoSize = True
+        Me.RadioButton2.Location = New System.Drawing.Point(50, 22)
+        Me.RadioButton2.Name = "RadioButton2"
+        Me.RadioButton2.Size = New System.Drawing.Size(38, 20)
+        Me.RadioButton2.TabIndex = 1
+        Me.RadioButton2.TabStop = True
+        Me.RadioButton2.Text = "女"
+        Me.RadioButton2.UseVisualStyleBackColor = True
+        '
+        'RadioButton1
+        '
+        Me.RadioButton1.AutoSize = True
+        Me.RadioButton1.Checked = True
+        Me.RadioButton1.Location = New System.Drawing.Point(6, 22)
+        Me.RadioButton1.Name = "RadioButton1"
+        Me.RadioButton1.Size = New System.Drawing.Size(38, 20)
+        Me.RadioButton1.TabIndex = 0
+        Me.RadioButton1.TabStop = True
+        Me.RadioButton1.Text = "男"
+        Me.RadioButton1.UseVisualStyleBackColor = True
         '
         'AP_Frm
         '
@@ -618,6 +934,15 @@ Partial Class AP_Frm
         Me.ScoreTabPage.PerformLayout()
         Me.ClassTabPage.ResumeLayout(False)
         Me.TabControl.ResumeLayout(False)
+        Me.QuestionnaireTabPage.ResumeLayout(False)
+        Me.GroupBox4.ResumeLayout(False)
+        Me.GroupBox4.PerformLayout()
+        Me.GroupBox3.ResumeLayout(False)
+        Me.GroupBox3.PerformLayout()
+        Me.GroupBox2.ResumeLayout(False)
+        Me.GroupBox2.PerformLayout()
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -690,4 +1015,29 @@ Partial Class AP_Frm
     Friend WithEvents ColumnHeader36 As System.Windows.Forms.ColumnHeader
     Friend WithEvents TabControl As System.Windows.Forms.TabControl
     Friend WithEvents QuestionnaireTabPage As System.Windows.Forms.TabPage
+    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents GroupBox4 As System.Windows.Forms.GroupBox
+    Friend WithEvents RadioButton20 As System.Windows.Forms.RadioButton
+    Friend WithEvents RadioButton16 As System.Windows.Forms.RadioButton
+    Friend WithEvents RadioButton17 As System.Windows.Forms.RadioButton
+    Friend WithEvents RadioButton18 As System.Windows.Forms.RadioButton
+    Friend WithEvents RadioButton19 As System.Windows.Forms.RadioButton
+    Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
+    Friend WithEvents RadioButton15 As System.Windows.Forms.RadioButton
+    Friend WithEvents RadioButton12 As System.Windows.Forms.RadioButton
+    Friend WithEvents RadioButton13 As System.Windows.Forms.RadioButton
+    Friend WithEvents RadioButton14 As System.Windows.Forms.RadioButton
+    Friend WithEvents RadioButton11 As System.Windows.Forms.RadioButton
+    Friend WithEvents RadioButton7 As System.Windows.Forms.RadioButton
+    Friend WithEvents RadioButton8 As System.Windows.Forms.RadioButton
+    Friend WithEvents RadioButton9 As System.Windows.Forms.RadioButton
+    Friend WithEvents RadioButton10 As System.Windows.Forms.RadioButton
+    Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
+    Friend WithEvents RadioButton6 As System.Windows.Forms.RadioButton
+    Friend WithEvents RadioButton5 As System.Windows.Forms.RadioButton
+    Friend WithEvents RadioButton3 As System.Windows.Forms.RadioButton
+    Friend WithEvents RadioButton4 As System.Windows.Forms.RadioButton
+    Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
+    Friend WithEvents RadioButton2 As System.Windows.Forms.RadioButton
+    Friend WithEvents RadioButton1 As System.Windows.Forms.RadioButton
 End Class

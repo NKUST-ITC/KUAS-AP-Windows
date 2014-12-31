@@ -15,6 +15,7 @@ Public Class AP_Frm
     Dim CatchAbsentThread As Thread
     Dim CatchCreditThread As Thread
     Dim ReadCreditThread As Thread
+    Dim AutoQThread As Thread
     Dim AbsentCheck As Boolean = False
     Dim ScoreCheck As Boolean = False
     Dim ClassCheck As Boolean = False
@@ -183,10 +184,14 @@ Public Class AP_Frm
 
             End Try
         ElseIf TabControl.SelectedIndex = 4 Then
-            If MsgBox("是否進行教學評量自動填寫 ?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
-                AutoQ()
-            End If
-            TabControl.SelectedIndex = 0
+            'If MsgBox("是否進行教學評量自動填寫 ?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+            '    If (7 < Month(Now) And Month(Now) < 12) Or (2 < Month(Now) And Month(Now) < 5) Then
+            '        AutoQ()
+            '    Else
+            '        AutoFinalQ()
+            '    End If
+            'End If
+            'TabControl.SelectedIndex = 0
         End If
     End Sub
     Dim CreditDoubleCheck As Boolean = False
@@ -260,32 +265,286 @@ Public Class AP_Frm
     End Sub
     Dim userName As String
     Dim password As String
+    Sub AutoFinalQ()
+        Try
+            Dim parameters As IDictionary(Of String, String) = New Dictionary(Of String, String)()
+            Dim response As HttpWebResponse
+            Dim reader As StreamReader
+            Dim respHTML As String
+
+            parameters.Clear()
+            parameters.Add("ServicePoint", "load")
+            parameters.Add("moduleId", "kuas_questionnaire")
+            response = HttpWebResponseUtility.CreatePostHttpResponse("http://140.127.113.109/Extjs/GetJavascript", parameters, Nothing, Nothing, Encoding.UTF8, cookies)
+
+            parameters.Clear()
+            parameters.Add("", "")
+            response = HttpWebResponseUtility.CreatePostHttpResponse("http://140.127.113.109/Questionnaire/Process/BrowseCheck", parameters, Nothing, Nothing, Encoding.UTF8, cookies)
+            reader = New StreamReader(response.GetResponseStream, System.Text.Encoding.GetEncoding("UTF-8"))
+            respHTML = reader.ReadToEnd()
+            Dim jsonDoc As Newtonsoft.Json.Linq.JObject = Newtonsoft.Json.JsonConvert.DeserializeObject(respHTML)
+            If (jsonDoc.Item("isOpen").ToString = False) Then
+                MsgBox("教學評量目前尚未開放填寫 !", MsgBoxStyle.Exclamation)
+                Exit Sub
+            End If
+            Dim _UserId As String = jsonDoc.Item("message")
+
+            Dim _count As Integer = 0
+            While (True)
+                response = HttpWebResponseUtility.CreateGetHttpResponse("http://140.127.113.155/Questionnaire/QuestionnaireInsert.aspx?UserId=" & _UserId, Nothing, Nothing, cookies)
+                reader = New StreamReader(response.GetResponseStream, System.Text.Encoding.GetEncoding("UTF-8"))
+                respHTML = reader.ReadToEnd()
+                Dim doc As New HtmlDocument()
+                doc.LoadHtml(respHTML)
+                Dim node As HtmlNode = doc.DocumentNode
+
+                Dim __FUCKVIEWSTATE As String = ""
+                Dim __VIEWSTATE As String = WebUtility.HtmlDecode(node.SelectSingleNode("//*[@id=""__VIEWSTATE""]").Attributes.Item("value").Value)
+                Dim __VIEWSTATEGENERATOR As String = WebUtility.HtmlDecode(node.SelectSingleNode("//*[@id=""__VIEWSTATEGENERATOR""]").Attributes.Item("value").Value)
+                Dim __EVENTVALIDATION As String = WebUtility.HtmlDecode(node.SelectSingleNode("//*[@id=""__EVENTVALIDATION""]").Attributes.Item("value").Value)
+                Dim __EVENTTARGET As String = Nothing
+
+                parameters.Clear()
+                response.Close()
+                For i = 0 To respHTML.Split(vbNewLine).Count - 1
+                    Dim _line As String = respHTML.Split(vbNewLine)(i)
+                    If Not _line = Nothing Then
+                        If (_line.Contains("$ContentPlaceHolder") And Not _line.Contains("javascript")) Then
+                            Dim startPos As Integer, endPos As Integer
+                            Dim _name As String = Nothing
+                            Dim _value As String = ""
+                            startPos = _line.IndexOf("name=""", StringComparison.CurrentCultureIgnoreCase) + 6
+                            endPos = _line.IndexOf("""", startPos, StringComparison.CurrentCultureIgnoreCase)
+                            _name = _line.Substring(startPos, endPos - startPos)
+                            If _line.Contains("value") Then
+                                startPos = _line.IndexOf("value=""", StringComparison.CurrentCultureIgnoreCase) + 7
+                                endPos = _line.IndexOf("""", startPos, StringComparison.CurrentCultureIgnoreCase)
+                                _value = _line.Substring(startPos, endPos - startPos)
+                            End If
+                            parameters.Add(_name, _value)
+                        ElseIf (_line.Contains("$ContentPlaceHolder") And _line.Contains("javascript") And __EVENTTARGET = Nothing) Then
+                            Dim startPos As Integer, endPos As Integer
+                            startPos = _line.IndexOf("__doPostBack(&#39;", StringComparison.CurrentCultureIgnoreCase) + 18
+                            endPos = _line.IndexOf("&#39", startPos, StringComparison.CurrentCultureIgnoreCase)
+                            __EVENTTARGET = _line.Substring(startPos, endPos - startPos)
+                        End If
+                    End If
+                Next
+                If __EVENTTARGET = Nothing Then
+                    Exit While
+                End If
+                While (__VIEWSTATE.Length > 32766)
+                    __FUCKVIEWSTATE &= System.Uri.EscapeDataString(__VIEWSTATE.Substring(0, 32766))
+                    __VIEWSTATE = __VIEWSTATE.Substring(32766)
+                End While
+                __FUCKVIEWSTATE &= System.Uri.EscapeDataString(__VIEWSTATE)
+                parameters.Add("__EVENTTARGET", System.Uri.EscapeDataString(__EVENTTARGET))
+                parameters.Add("__EVENTARGUMENT", "")
+                parameters.Add("__VIEWSTATE", __FUCKVIEWSTATE)
+                parameters.Add("__VIEWSTATEGENERATOR", System.Uri.EscapeDataString(__VIEWSTATEGENERATOR))
+                parameters.Add("__EVENTVALIDATION", System.Uri.EscapeDataString(__EVENTVALIDATION))
+
+                response = HttpWebResponseUtility.CreatePostHttpResponse("http://140.127.113.155/Questionnaire/QuestionnaireInsert.aspx?UserId=" & _UserId, parameters, Nothing, Nothing, Encoding.UTF8, cookies)
+                reader = New StreamReader(response.GetResponseStream, System.Text.Encoding.GetEncoding("UTF-8"))
+                respHTML = reader.ReadToEnd()
+                doc.LoadHtml(respHTML)
+                node = doc.DocumentNode
+                __VIEWSTATE = WebUtility.HtmlDecode(node.SelectSingleNode("//*[@id=""__VIEWSTATE""]").Attributes.Item("value").Value)
+                __VIEWSTATEGENERATOR = WebUtility.HtmlDecode(node.SelectSingleNode("//*[@id=""__VIEWSTATEGENERATOR""]").Attributes.Item("value").Value)
+                __EVENTVALIDATION = WebUtility.HtmlDecode(node.SelectSingleNode("//*[@id=""__EVENTVALIDATION""]").Attributes.Item("value").Value)
+
+                __FUCKVIEWSTATE = ""
+                While (__VIEWSTATE.Length > 32766)
+                    __FUCKVIEWSTATE &= System.Uri.EscapeDataString(__VIEWSTATE.Substring(0, 32766))
+                    __VIEWSTATE = __VIEWSTATE.Substring(32766)
+                End While
+                __FUCKVIEWSTATE &= System.Uri.EscapeDataString(__VIEWSTATE)
+
+                response.Close()
+                parameters.Clear()
+                For i = 0 To respHTML.Split(vbNewLine).Count - 1
+                    Dim _line As String = respHTML.Split(vbNewLine)(i)
+                    If Not _line = Nothing Then
+                        If (_line.Contains("$ContentPlaceHolder") And _line.Contains("HiddenField") And Not _line.Contains("gvInProgress") And Not _line.Contains("GridViewContent") And Not _line.Contains("javascript")) Then
+                            Dim startPos As Integer, endPos As Integer
+                            Dim _name As String = Nothing
+                            Dim _value As String = ""
+                            startPos = _line.IndexOf("name=""", StringComparison.CurrentCultureIgnoreCase) + 6
+                            endPos = _line.IndexOf("""", startPos, StringComparison.CurrentCultureIgnoreCase)
+                            _name = _line.Substring(startPos, endPos - startPos)
+                            If _line.Contains("value") Then
+                                startPos = _line.IndexOf("value=""", StringComparison.CurrentCultureIgnoreCase) + 7
+                                endPos = _line.IndexOf("""", startPos, StringComparison.CurrentCultureIgnoreCase)
+                                _value = _line.Substring(startPos, endPos - startPos)
+                            End If
+                            parameters.Add(_name, System.Uri.EscapeDataString(_value))
+                        ElseIf (_line.Contains("$ContentPlaceHolder") And _line.Contains("gvInProgress") And Not _line.Contains("GridView") And Not _line.Contains("javascript")) Then
+                            Dim startPos As Integer, endPos As Integer
+                            Dim _name As String = Nothing
+                            Dim _value As String = ""
+                            startPos = _line.IndexOf("name=""", StringComparison.CurrentCultureIgnoreCase) + 6
+                            endPos = _line.IndexOf("""", startPos, StringComparison.CurrentCultureIgnoreCase)
+                            _name = _line.Substring(startPos, endPos - startPos)
+                            If _line.Contains("value") Then
+                                startPos = _line.IndexOf("value=""", StringComparison.CurrentCultureIgnoreCase) + 7
+                                endPos = _line.IndexOf("""", startPos, StringComparison.CurrentCultureIgnoreCase)
+                                _value = _line.Substring(startPos, endPos - startPos)
+                            End If
+                            parameters.Add(_name, System.Uri.EscapeDataString(_value))
+                        ElseIf (_line.Contains("$ContentPlaceHolder") And Not _line.Contains("gvInProgress") And _line.Contains("GridView") And Not _line.Contains("Radio") And Not _line.Contains("javascript")) Then
+                            Dim startPos As Integer, endPos As Integer
+                            Dim _name As String = Nothing
+                            Dim _value As String = ""
+                            startPos = _line.IndexOf("name=""", StringComparison.CurrentCultureIgnoreCase) + 6
+                            endPos = _line.IndexOf("""", startPos, StringComparison.CurrentCultureIgnoreCase)
+                            _name = _line.Substring(startPos, endPos - startPos)
+                            If _line.Contains("value") Then
+                                startPos = _line.IndexOf("value=""", StringComparison.CurrentCultureIgnoreCase) + 7
+                                endPos = _line.IndexOf("""", startPos, StringComparison.CurrentCultureIgnoreCase)
+                                _value = _line.Substring(startPos, endPos - startPos)
+                            End If
+                            parameters.Add(_name, System.Uri.EscapeDataString(_value))
+                        ElseIf (_line.Contains("$ContentPlaceHolder") And Not _line.Contains("gvInProgress") And _line.Contains("GridView") And _line.Contains("Radio") And Not _line.Contains("javascript")) Then
+                            Dim startPos As Integer, endPos As Integer
+                            Dim _name As String = Nothing
+                            Dim _value As String = ""
+                            startPos = _line.IndexOf("name=""", StringComparison.CurrentCultureIgnoreCase) + 6
+                            endPos = _line.IndexOf("""", startPos, StringComparison.CurrentCultureIgnoreCase)
+                            _name = _line.Substring(startPos, endPos - startPos)
+                            Dim RndNum As New Random()
+                            'ctl03 必修
+                            If (_line.Contains("ctl02")) Then
+                                _value = ctl02
+                            ElseIf (_line.Contains("ctl04")) Then
+                                _value = ctl04
+                            ElseIf (_line.Contains("ctl05")) Then
+                                _value = ctl05
+                            ElseIf (_line.Contains("ctl06")) Then
+                                _value = ctl06
+                            Else
+                                _value = 1
+                            End If
+                            If Not parameters.ContainsKey(_name) Then
+                                parameters.Add(_name, System.Uri.EscapeDataString(_value))
+                            End If
+                        End If
+                    End If
+                Next
+                parameters.Add("__EVENTTARGET", "")
+                parameters.Add("__EVENTARGUMENT", "")
+                parameters.Add("__VIEWSTATE", __FUCKVIEWSTATE)
+                parameters.Add("__VIEWSTATEGENERATOR", System.Uri.EscapeDataString(__VIEWSTATEGENERATOR))
+                parameters.Add("__EVENTVALIDATION", System.Uri.EscapeDataString(__EVENTVALIDATION))
+                parameters.Add("ctl00$ContentPlaceHolder1$ButtonNextPart", System.Uri.EscapeDataString("第二部分(Second+Part)"))
+
+                response = HttpWebResponseUtility.CreatePostHttpResponse("http://140.127.113.155/Questionnaire/QuestionnaireInsert.aspx?UserId=" & _UserId, parameters, Nothing, Nothing, Encoding.UTF8, cookies)
+                reader = New StreamReader(response.GetResponseStream, System.Text.Encoding.GetEncoding("UTF-8"))
+                respHTML = reader.ReadToEnd()
+                doc.LoadHtml(respHTML)
+                node = doc.DocumentNode
+                __VIEWSTATE = WebUtility.HtmlDecode(node.SelectSingleNode("//*[@id=""__VIEWSTATE""]").Attributes.Item("value").Value)
+                __VIEWSTATEGENERATOR = WebUtility.HtmlDecode(node.SelectSingleNode("//*[@id=""__VIEWSTATEGENERATOR""]").Attributes.Item("value").Value)
+                __EVENTVALIDATION = WebUtility.HtmlDecode(node.SelectSingleNode("//*[@id=""__EVENTVALIDATION""]").Attributes.Item("value").Value)
+
+                __FUCKVIEWSTATE = ""
+                While (__VIEWSTATE.Length > 32766)
+                    __FUCKVIEWSTATE &= System.Uri.EscapeDataString(__VIEWSTATE.Substring(0, 32766))
+                    __VIEWSTATE = __VIEWSTATE.Substring(32766)
+                End While
+                __FUCKVIEWSTATE &= System.Uri.EscapeDataString(__VIEWSTATE)
+
+                response.Close()
+                parameters.Clear()
+                For i = 0 To respHTML.Split(vbNewLine).Count - 1
+                    Dim _line As String = respHTML.Split(vbNewLine)(i)
+                    If Not _line = Nothing Then
+                        If (_line.Contains("$ContentPlaceHolder") And _line.Contains("HiddenField") And Not _line.Contains("gvInProgress") And Not _line.Contains("GridViewContent") And Not _line.Contains("javascript")) Then
+                            Dim startPos As Integer, endPos As Integer
+                            Dim _name As String = Nothing
+                            Dim _value As String = ""
+                            startPos = _line.IndexOf("name=""", StringComparison.CurrentCultureIgnoreCase) + 6
+                            endPos = _line.IndexOf("""", startPos, StringComparison.CurrentCultureIgnoreCase)
+                            _name = _line.Substring(startPos, endPos - startPos)
+                            If _line.Contains("value") Then
+                                startPos = _line.IndexOf("value=""", StringComparison.CurrentCultureIgnoreCase) + 7
+                                endPos = _line.IndexOf("""", startPos, StringComparison.CurrentCultureIgnoreCase)
+                                _value = _line.Substring(startPos, endPos - startPos)
+                            End If
+                            parameters.Add(_name, System.Uri.EscapeDataString(_value))
+                        ElseIf (_line.Contains("$ContentPlaceHolder") And _line.Contains("gvInProgress") And Not _line.Contains("GridView") And Not _line.Contains("javascript")) Then
+                            Dim startPos As Integer, endPos As Integer
+                            Dim _name As String = Nothing
+                            Dim _value As String = ""
+                            startPos = _line.IndexOf("name=""", StringComparison.CurrentCultureIgnoreCase) + 6
+                            endPos = _line.IndexOf("""", startPos, StringComparison.CurrentCultureIgnoreCase)
+                            _name = _line.Substring(startPos, endPos - startPos)
+                            If _line.Contains("value") Then
+                                startPos = _line.IndexOf("value=""", StringComparison.CurrentCultureIgnoreCase) + 7
+                                endPos = _line.IndexOf("""", startPos, StringComparison.CurrentCultureIgnoreCase)
+                                _value = _line.Substring(startPos, endPos - startPos)
+                            End If
+                            parameters.Add(_name, System.Uri.EscapeDataString(_value))
+                        ElseIf (_line.Contains("$ContentPlaceHolder") And Not _line.Contains("gvInProgress") And _line.Contains("GridView") And Not _line.Contains("Radio") And Not _line.Contains("javascript")) Then
+                            Dim startPos As Integer, endPos As Integer
+                            Dim _name As String = Nothing
+                            Dim _value As String = ""
+                            startPos = _line.IndexOf("name=""", StringComparison.CurrentCultureIgnoreCase) + 6
+                            endPos = _line.IndexOf("""", startPos, StringComparison.CurrentCultureIgnoreCase)
+                            _name = _line.Substring(startPos, endPos - startPos)
+                            If _line.Contains("value") Then
+                                startPos = _line.IndexOf("value=""", StringComparison.CurrentCultureIgnoreCase) + 7
+                                endPos = _line.IndexOf("""", startPos, StringComparison.CurrentCultureIgnoreCase)
+                                _value = _line.Substring(startPos, endPos - startPos)
+                            End If
+                            parameters.Add(_name, System.Uri.EscapeDataString(_value))
+                        ElseIf (_line.Contains("$ContentPlaceHolder") And Not _line.Contains("gvInProgress") And _line.Contains("GridView") And _line.Contains("Radio") And Not _line.Contains("javascript")) Then
+                            Dim startPos As Integer, endPos As Integer
+                            Dim _name As String = Nothing
+                            Dim _value As String = ""
+                            startPos = _line.IndexOf("name=""", StringComparison.CurrentCultureIgnoreCase) + 6
+                            endPos = _line.IndexOf("""", startPos, StringComparison.CurrentCultureIgnoreCase)
+                            _name = _line.Substring(startPos, endPos - startPos)
+                            _value = 1
+                            If Not parameters.ContainsKey(_name) Then
+                                parameters.Add(_name, System.Uri.EscapeDataString(_value))
+                            End If
+                        End If
+                    End If
+                Next
+                parameters.Add("__EVENTTARGET", "")
+                parameters.Add("__EVENTARGUMENT", "")
+                parameters.Add("__VIEWSTATE", __FUCKVIEWSTATE)
+                parameters.Add("__VIEWSTATEGENERATOR", System.Uri.EscapeDataString(__VIEWSTATEGENERATOR))
+                parameters.Add("__EVENTVALIDATION", System.Uri.EscapeDataString(__EVENTVALIDATION))
+                parameters.Add("ctl00$ContentPlaceHolder1$Button1", System.Uri.EscapeDataString("送出(Send)"))
+                response = HttpWebResponseUtility.CreatePostHttpResponse("http://140.127.113.155/Questionnaire/QuestionnaireInsert.aspx?UserId=" & _UserId, parameters, Nothing, Nothing, Encoding.UTF8, cookies)
+                response.Close()
+                _count += 1
+            End While
+            If _count > 0 Then
+                If MsgBox("填寫完畢 , 共填寫完" & _count & "個教學評量 , 是否要至選課系統查看填寫結果 !?", MsgBoxStyle.Information + MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+                    System.Diagnostics.Process.Start("http://140.127.113.107/Account/LogOn?ReturnUrl=%2f")
+                End If
+            Else
+                If MsgBox("沒有教學評量需要填寫 , 是否要至選課系統查看 !?", MsgBoxStyle.Information + MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+                    System.Diagnostics.Process.Start("http://140.127.113.107/Account/LogOn?ReturnUrl=%2f")
+                End If
+            End If
+        Catch ex As Exception
+            MsgBox("發生異常 , 暫無法自動填寫教學評量 !", MsgBoxStyle.Critical)
+        End Try
+        Button1.Enabled = True
+        GroupBox1.Enabled = True
+        GroupBox2.Enabled = True
+        GroupBox3.Enabled = True
+        GroupBox4.Enabled = True
+    End Sub
     Sub AutoQ()
         Try
-            'Dim loginUrl As String = "http://140.127.113.109/Account/LogOn?ReturnUrl=%2f"
-            'Dim userName As String = User.Text
-            'Dim password As String = Pwd.Text
-            'CourseAccount = userName
-            'CoursePassword = password
-
             Dim parameters As IDictionary(Of String, String) = New Dictionary(Of String, String)()
-            'parameters.Add("UserName", userName)
-            'parameters.Add("Password", password)
-            Dim response As HttpWebResponse '= HttpWebResponseUtility.CreatePostHttpResponse(loginUrl, parameters, Nothing, Nothing, Encoding.UTF8, cookies)
-            Dim reader As StreamReader '= New StreamReader(response.GetResponseStream, System.Text.Encoding.GetEncoding("UTF-8"))
-            Dim respHTML As String '= reader.ReadToEnd()
-
-            'Dim title As String = respHTML.Substring(respHTML.IndexOf("<title>", StringComparison.CurrentCultureIgnoreCase) + 7, respHTML.IndexOf("</title>", StringComparison.CurrentCultureIgnoreCase) - respHTML.IndexOf("<title>", StringComparison.CurrentCultureIgnoreCase) + 7)
-            'Try
-            '    'Debug.Print(title.Split("：")(1))
-            '    CourseAccount = title.Split("：")(1)
-            '    Me.Text = "KUAS Auto Course (By Silent) @ " & title.Split("：")(1)
-            'Catch ex As Exception
-            '    MsgBox("登入失敗。請更正錯誤後再試一次。" & vbCrLf & "所提供的使用者名稱或密碼不正確。", MsgBoxStyle.Exclamation, "Validation Summary Errors.")
-            '    Exit Sub
-            'End Try
-
-            'response = HttpWebResponseUtility.CreateGetHttpResponse("http://140.127.113.109/", Nothing, Nothing, cookies)
+            Dim response As HttpWebResponse
+            Dim reader As StreamReader
+            Dim respHTML As String
 
             parameters.Clear()
             parameters.Add("ServicePoint", "load")
@@ -411,7 +670,8 @@ Public Class AP_Frm
                             endPos = _line.IndexOf("""", startPos, StringComparison.CurrentCultureIgnoreCase)
                             _name = _line.Substring(startPos, endPos - startPos)
                             Dim RndNum As New Random()
-                            _value = RndNum.Next(1, 4)
+                            '_value = RndNum.Next(1, 4)
+                            _value = 1
                             Try
                                 parameters.Add(_name, System.Uri.EscapeDataString(_value))
                             Catch ex As Exception
@@ -442,6 +702,11 @@ Public Class AP_Frm
         Catch ex As Exception
             MsgBox("發生異常 , 暫無法自動填寫教學評量 !", MsgBoxStyle.Critical)
         End Try
+        Button1.Enabled = True
+        GroupBox1.Enabled = True
+        GroupBox2.Enabled = True
+        GroupBox3.Enabled = True
+        GroupBox4.Enabled = True
     End Sub
     Sub LoginAP()
         Try
@@ -1562,6 +1827,72 @@ DontOpen:
                 CreditCheck = False
             End Try
         End While
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        If MsgBox("是否進行教學評量自動填寫 ?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+            Button1.Enabled = False
+            GroupBox1.Enabled = False
+            GroupBox2.Enabled = False
+            GroupBox3.Enabled = False
+            GroupBox4.Enabled = False
+            If (7 < Month(Now) And Month(Now) < 12) Or (2 < Month(Now) And Month(Now) < 5) Then
+                AutoQThread = New Thread(AddressOf AutoQ)
+                AutoQThread.Start()
+            Else
+                AutoQThread = New Thread(AddressOf AutoFinalQ)
+                AutoQThread.Start()
+            End If
+        End If
+    End Sub
+    Dim ctl02 = 1
+    Dim ctl04 = 1
+    Dim ctl05 = 1
+    Dim ctl06 = 1
+    Private Sub RadioButton1_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton1.CheckedChanged, RadioButton2.CheckedChanged, RadioButton3.CheckedChanged, RadioButton4.CheckedChanged, RadioButton5.CheckedChanged, RadioButton6.CheckedChanged, RadioButton7.CheckedChanged, RadioButton8.CheckedChanged, RadioButton9.CheckedChanged, RadioButton10.CheckedChanged, RadioButton11.CheckedChanged, RadioButton12.CheckedChanged, RadioButton13.CheckedChanged, RadioButton14.CheckedChanged, RadioButton15.CheckedChanged, RadioButton16.CheckedChanged, RadioButton17.CheckedChanged, RadioButton18.CheckedChanged, RadioButton19.CheckedChanged, RadioButton20.CheckedChanged
+        Dim RadioButtonx As RadioButton = CType(sender, RadioButton)
+        Select Case Val(RadioButtonx.Name.Replace("RadioButton", ""))
+            Case 1
+                ctl02 = 1
+            Case 2
+                ctl02 = 2
+            Case 3
+                ctl04 = 1
+            Case 4
+                ctl04 = 2
+            Case 5
+                ctl04 = 3
+            Case 6
+                ctl04 = 4
+            Case 7
+                ctl05 = 1
+            Case 8
+                ctl05 = 2
+            Case 9
+                ctl05 = 3
+            Case 10
+                ctl05 = 4
+            Case 11
+                ctl05 = 5
+            Case 12
+                ctl05 = 6
+            Case 13
+                ctl05 = 7
+            Case 14
+                ctl05 = 8
+            Case 15
+                ctl05 = 9
+            Case 16
+                ctl06 = 1
+            Case 17
+                ctl06 = 2
+            Case 18
+                ctl06 = 3
+            Case 19
+                ctl06 = 4
+            Case 20
+                ctl06 = 5
+        End Select
     End Sub
 End Class
 Public Class XmlSerialize
