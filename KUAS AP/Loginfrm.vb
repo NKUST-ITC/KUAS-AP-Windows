@@ -99,13 +99,6 @@ Public Class Loginfrm
             Dim response As HttpWebResponse = HttpWebResponseUtility.CreatePostHttpResponse("http://140.127.113.231/kuas/perchk.jsp", parameters, Nothing, Nothing, Encoding.UTF8, cookies)
             Dim reader As StreamReader = New StreamReader(response.GetResponseStream, System.Text.Encoding.GetEncoding("UTF-8"))
             Dim respHTML As String = reader.ReadToEnd()
-            'If respHTML.Contains("script") Then
-            '    MsgBox("登入失敗 , 請在嘗試一次 !", MsgBoxStyle.Critical)
-            '    User.Enabled = True
-            '    Pwd.Enabled = True
-            '    LoginBtn.Enabled = True
-            '    Exit Sub
-            'End If
 
             parameters.Clear()
             response = HttpWebResponseUtility.CreateGetHttpResponse("http://140.127.113.231/kuas/f_head.jsp", Nothing, Nothing, cookies)
@@ -116,23 +109,12 @@ Public Class Loginfrm
             doc.LoadHtml(respHTML)
             Dim node As HtmlNode = doc.DocumentNode
 
-
             parameters.Clear()
             parameters.Add("UserName", userName)
             parameters.Add("Password", password)
             response = HttpWebResponseUtility.CreatePostHttpResponse("http://140.127.113.109/Account/LogOn?ReturnUrl=%2f", parameters, Nothing, Nothing, Encoding.UTF8, cookies)
             reader = New StreamReader(response.GetResponseStream, System.Text.Encoding.GetEncoding("UTF-8"))
             respHTML = reader.ReadToEnd()
-
-            Dim title As String = respHTML.Substring(respHTML.IndexOf("<title>", StringComparison.CurrentCultureIgnoreCase) + 7, respHTML.IndexOf("</title>", StringComparison.CurrentCultureIgnoreCase) - respHTML.IndexOf("<title>", StringComparison.CurrentCultureIgnoreCase) + 7)
-            Try
-                'Debug.Print(title.Split("：")(1))
-                CourseAccount = title.Split("：")(1)
-                Me.Text = "KUAS Auto Course (By Silent) @ " & title.Split("：")(1)
-            Catch ex As Exception
-                MsgBox("登入失敗。請更正錯誤後再試一次。" & vbCrLf & "所提供的使用者名稱或密碼不正確。", MsgBoxStyle.Exclamation, "Validation Summary Errors.")
-                Exit Sub
-            End Try
 
             Try
                 Me.Text = "KUAS AP (By Silent) @ " & WebUtility.HtmlDecode(node.SelectNodes("/html/body/div[1]/div/div[3]/span[3]")(0).InnerText)
