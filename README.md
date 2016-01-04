@@ -27,7 +27,7 @@ How to use ?
 如果你有更好的想法歡迎Fork             
 如果你有建議不會寫Code歡迎[聯絡我](https://www.facebook.com/HearSilent)                
   
-你也可以從這下載 : [Dropbox載點](http://goo.gl/ULNwSe) (最後更新日期 : 103/12/31)           
+你也可以從這下載 : [Dropbox載點](https://goo.gl/kzOSLz) (最後更新日期 : 105/01/04)           
 
 ##### .NET需求[4.0](http://www.microsoft.com/zh-tw/download/details.aspx?id=24872) (含以上)                      
               
@@ -46,11 +46,12 @@ Android ? iOS ?
 - Android : [Google Play](https://play.google.com/store/apps/details?id=com.kuas.ap)            
 - iOS : [App Store](https://itunes.apple.com/us/app/gao-ying-xiao-wu-tong/id893131497)            
             
-Source Code : [Louie Lu](https://github.com/kuastw/kuasap)             
+Source Code [Android] : [HearSilent](https://github.com/hearsilent/KUAS-AP-Material)          
+Source Code [iOS] : [Louie Lu](https://github.com/kuastw/kuasap)             
                  
 Notice            
 =============================
-- 手機版 (Louie Lu, JohnThunder, registerAutumn, Evans)            
+- 手機版 (Louie Lu, JohnThunder, registerAutumn, Evans, HearSilent)            
 - 電腦版 (HearSilent)            
          
 我們都不是校方人員 ,             
