@@ -1,15 +1,15 @@
 About
 =============================
-舊版校務系統直接無法在IE以外瀏覽器使用               
-要安裝IE Tab擴充元件才能使用                 
-當IE版本太高又碰到相容性問題               
+舊版校務系統直接無法在 IE 以外瀏覽器使用               
+要安裝 IE Tab 擴充元件才能使用                 
+當 IE 版本太高又碰到相容性問題               
 無法正常瀏覽校務系統                      
                                      
 為了解決此問題                                 
 於是誕生了電腦版非官方校務系統                     
                                
-[新版校務系統](http://140.127.113.231/kuas/index.html)在103/8/4上線                  
-目前已可以支援Internet Explorer、Google Chrome、Mozilla Firefox、Safari瀏覽器。                
+[新版校務系統](http://140.127.113.231/kuas/index.html)在 103/8/4 上線                  
+目前已可以支援 Internet Explorer、Google Chrome、Mozilla Firefox、Safari 瀏覽器。                
 介面也變得比較好看                   
                  
 但由於某些人比較懶 (Ex : Me)                
@@ -20,8 +20,8 @@ About
              
 How to use ?            
 =============================               
-如果你有Compiler             
-歡迎Clone [Source Code](https://github.com/kuastw/KUAS-AP-Windows.git) 自行編譯             
+如果你有 Compiler             
+歡迎 Clone [Source Code](https://github.com/kuastw/KUAS-AP-Windows.git) 自行編譯             
 工作環境 : Visual Studio 2013                
 
 如果你有更好的想法歡迎Fork             
