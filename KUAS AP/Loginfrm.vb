@@ -112,7 +112,7 @@ Public Class Loginfrm
             parameters.Clear()
             parameters.Add("UserName", userName)
             parameters.Add("Password", password)
-            response = HttpWebResponseUtility.CreatePostHttpResponse("http://140.127.113.109/Account/LogOn?ReturnUrl=%2f", parameters, Nothing, Nothing, Encoding.UTF8, cookies)
+            response = HttpWebResponseUtility.CreatePostHttpResponse("http://140.127.113.137/Account/LogOn?ReturnUrl=%2f", parameters, Nothing, Nothing, Encoding.UTF8, cookies)
             reader = New StreamReader(response.GetResponseStream, System.Text.Encoding.GetEncoding("UTF-8"))
             respHTML = reader.ReadToEnd()
 
