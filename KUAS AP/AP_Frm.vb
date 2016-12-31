@@ -392,7 +392,7 @@ Public Class AP_Frm
                         ElseIf (i = 5) Then
                             value = ctl06
                         Else
-                            value = 1
+                            value = 4
                         End If
                         parameters.Add(name, System.Uri.EscapeDataString(value))
                         Debug.Print(name & ": " & value)
@@ -449,18 +449,7 @@ Public Class AP_Frm
                         Debug.Print(_name & ": " & _value)
                     Next
                     Dim name As String = node.SelectNodes(xpath + "/table/tr/td[1]/input")(0).Attributes("name").Value
-                    Dim value As String
-                    If (i = 2) Then
-                        value = ctl02
-                    ElseIf (i = 3) Then
-                        value = ctl04
-                    ElseIf (i = 4) Then
-                        value = ctl05
-                    ElseIf (i = 5) Then
-                        value = ctl06
-                    Else
-                        value = 1
-                    End If
+                    Dim value As String = "4"
                     parameters.Add(name, System.Uri.EscapeDataString(value))
                     Debug.Print(name & ": " & value)
                 Next
