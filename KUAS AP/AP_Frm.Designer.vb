@@ -23,6 +23,7 @@ Partial Class AP_Frm
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(AP_Frm))
         Me.BlackContextMenuStrip = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.白名單WToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.黑名單BToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -136,123 +137,128 @@ Partial Class AP_Frm
         '
         'BlackContextMenuStrip
         '
+        Me.BlackContextMenuStrip.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.BlackContextMenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.白名單WToolStripMenuItem, Me.黑名單BToolStripMenuItem})
         Me.BlackContextMenuStrip.Name = "ContextMenuStrip3"
-        Me.BlackContextMenuStrip.Size = New System.Drawing.Size(134, 48)
+        Me.BlackContextMenuStrip.Size = New System.Drawing.Size(159, 56)
         '
         '白名單WToolStripMenuItem
         '
         Me.白名單WToolStripMenuItem.Name = "白名單WToolStripMenuItem"
-        Me.白名單WToolStripMenuItem.Size = New System.Drawing.Size(133, 22)
+        Me.白名單WToolStripMenuItem.Size = New System.Drawing.Size(158, 26)
         Me.白名單WToolStripMenuItem.Text = "白名單 (&W)"
         '
         '黑名單BToolStripMenuItem
         '
         Me.黑名單BToolStripMenuItem.Name = "黑名單BToolStripMenuItem"
-        Me.黑名單BToolStripMenuItem.Size = New System.Drawing.Size(133, 22)
+        Me.黑名單BToolStripMenuItem.Size = New System.Drawing.Size(158, 26)
         Me.黑名單BToolStripMenuItem.Text = "黑名單 (&B)"
         '
         'ElectiveContextMenuStrip
         '
+        Me.ElectiveContextMenuStrip.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.ElectiveContextMenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.退選CToolStripMenuItem})
         Me.ElectiveContextMenuStrip.Name = "ElectiveContextMenuStrip"
-        Me.ElectiveContextMenuStrip.Size = New System.Drawing.Size(118, 26)
+        Me.ElectiveContextMenuStrip.Size = New System.Drawing.Size(139, 30)
         '
         '退選CToolStripMenuItem
         '
         Me.退選CToolStripMenuItem.Name = "退選CToolStripMenuItem"
-        Me.退選CToolStripMenuItem.Size = New System.Drawing.Size(117, 22)
+        Me.退選CToolStripMenuItem.Size = New System.Drawing.Size(138, 26)
         Me.退選CToolStripMenuItem.Text = "退選 (&C)"
         '
         'TeacherContextMenuStrip
         '
+        Me.TeacherContextMenuStrip.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.TeacherContextMenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem2, Me.ToolStripMenuItem3})
         Me.TeacherContextMenuStrip.Name = "ContextMenuStrip3"
-        Me.TeacherContextMenuStrip.Size = New System.Drawing.Size(134, 48)
+        Me.TeacherContextMenuStrip.Size = New System.Drawing.Size(159, 56)
         '
         'ToolStripMenuItem2
         '
         Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
-        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(133, 22)
+        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(158, 26)
         Me.ToolStripMenuItem2.Text = "白名單 (&W)"
         '
         'ToolStripMenuItem3
         '
         Me.ToolStripMenuItem3.Name = "ToolStripMenuItem3"
-        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(133, 22)
+        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(158, 26)
         Me.ToolStripMenuItem3.Text = "黑名單 (&B)"
         '
         'CourseContextMenuStrip
         '
+        Me.CourseContextMenuStrip.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.CourseContextMenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem1, Me.刪除DToolStripMenuItem, Me.全部刪除CToolStripMenuItem})
         Me.CourseContextMenuStrip.Name = "ContextMenuStrip1"
-        Me.CourseContextMenuStrip.Size = New System.Drawing.Size(142, 70)
+        Me.CourseContextMenuStrip.Size = New System.Drawing.Size(169, 82)
         '
         'ToolStripMenuItem1
         '
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(141, 22)
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(168, 26)
         Me.ToolStripMenuItem1.Text = "新增 (&A)"
         '
         '刪除DToolStripMenuItem
         '
         Me.刪除DToolStripMenuItem.Name = "刪除DToolStripMenuItem"
-        Me.刪除DToolStripMenuItem.Size = New System.Drawing.Size(141, 22)
+        Me.刪除DToolStripMenuItem.Size = New System.Drawing.Size(168, 26)
         Me.刪除DToolStripMenuItem.Text = "刪除 (&R)"
         '
         '全部刪除CToolStripMenuItem
         '
         Me.全部刪除CToolStripMenuItem.Name = "全部刪除CToolStripMenuItem"
-        Me.全部刪除CToolStripMenuItem.Size = New System.Drawing.Size(141, 22)
+        Me.全部刪除CToolStripMenuItem.Size = New System.Drawing.Size(168, 26)
         Me.全部刪除CToolStripMenuItem.Text = "全部刪除 (&C)"
         '
         'WhiteContextMenuStrip
         '
+        Me.WhiteContextMenuStrip.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.WhiteContextMenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.上移UToolStripMenuItem, Me.下移DToolStripMenuItem, Me.ToolStripSeparator1, Me.新增AToolStripMenuItem, Me.刪除DToolStripMenuItem1, Me.全部刪除CToolStripMenuItem1})
         Me.WhiteContextMenuStrip.Name = "ContextMenuStrip2"
-        Me.WhiteContextMenuStrip.Size = New System.Drawing.Size(142, 120)
+        Me.WhiteContextMenuStrip.Size = New System.Drawing.Size(169, 140)
         '
         '上移UToolStripMenuItem
         '
         Me.上移UToolStripMenuItem.Name = "上移UToolStripMenuItem"
-        Me.上移UToolStripMenuItem.Size = New System.Drawing.Size(141, 22)
+        Me.上移UToolStripMenuItem.Size = New System.Drawing.Size(168, 26)
         Me.上移UToolStripMenuItem.Text = "上移 (&U)"
         '
         '下移DToolStripMenuItem
         '
         Me.下移DToolStripMenuItem.Name = "下移DToolStripMenuItem"
-        Me.下移DToolStripMenuItem.Size = New System.Drawing.Size(141, 22)
+        Me.下移DToolStripMenuItem.Size = New System.Drawing.Size(168, 26)
         Me.下移DToolStripMenuItem.Text = "下移 (&D)"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(138, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(165, 6)
         '
         '新增AToolStripMenuItem
         '
         Me.新增AToolStripMenuItem.Name = "新增AToolStripMenuItem"
-        Me.新增AToolStripMenuItem.Size = New System.Drawing.Size(141, 22)
+        Me.新增AToolStripMenuItem.Size = New System.Drawing.Size(168, 26)
         Me.新增AToolStripMenuItem.Text = "新增 (&A)"
         '
         '刪除DToolStripMenuItem1
         '
         Me.刪除DToolStripMenuItem1.Name = "刪除DToolStripMenuItem1"
-        Me.刪除DToolStripMenuItem1.Size = New System.Drawing.Size(141, 22)
+        Me.刪除DToolStripMenuItem1.Size = New System.Drawing.Size(168, 26)
         Me.刪除DToolStripMenuItem1.Text = "刪除 (&R)"
         '
         '全部刪除CToolStripMenuItem1
         '
         Me.全部刪除CToolStripMenuItem1.Name = "全部刪除CToolStripMenuItem1"
-        Me.全部刪除CToolStripMenuItem1.Size = New System.Drawing.Size(141, 22)
+        Me.全部刪除CToolStripMenuItem1.Size = New System.Drawing.Size(168, 26)
         Me.全部刪除CToolStripMenuItem1.Text = "全部刪除 (&C)"
         '
         'CreditTabPage
         '
         Me.CreditTabPage.Controls.Add(Me.CreditListView)
-        Me.CreditTabPage.Location = New System.Drawing.Point(4, 25)
+        Me.CreditTabPage.Location = New System.Drawing.Point(4, 28)
         Me.CreditTabPage.Name = "CreditTabPage"
-        Me.CreditTabPage.Size = New System.Drawing.Size(652, 381)
+        Me.CreditTabPage.Size = New System.Drawing.Size(652, 378)
         Me.CreditTabPage.TabIndex = 6
         Me.CreditTabPage.Text = "學分試算"
         Me.CreditTabPage.UseVisualStyleBackColor = True
@@ -267,7 +273,7 @@ Partial Class AP_Frm
         Me.CreditListView.MultiSelect = False
         Me.CreditListView.Name = "CreditListView"
         Me.CreditListView.ShowItemToolTips = True
-        Me.CreditListView.Size = New System.Drawing.Size(652, 381)
+        Me.CreditListView.Size = New System.Drawing.Size(652, 378)
         Me.CreditListView.TabIndex = 2
         Me.CreditListView.UseCompatibleStateImageBehavior = False
         Me.CreditListView.View = System.Windows.Forms.View.Details
@@ -311,10 +317,10 @@ Partial Class AP_Frm
         '
         Me.LogTabPage.Controls.Add(Me.AbsentSemesterCombobox)
         Me.LogTabPage.Controls.Add(Me.AbsentListView)
-        Me.LogTabPage.Location = New System.Drawing.Point(4, 25)
+        Me.LogTabPage.Location = New System.Drawing.Point(4, 28)
         Me.LogTabPage.Name = "LogTabPage"
         Me.LogTabPage.Padding = New System.Windows.Forms.Padding(3)
-        Me.LogTabPage.Size = New System.Drawing.Size(652, 381)
+        Me.LogTabPage.Size = New System.Drawing.Size(652, 378)
         Me.LogTabPage.TabIndex = 1
         Me.LogTabPage.Text = "缺曠查詢"
         Me.LogTabPage.UseVisualStyleBackColor = True
@@ -325,7 +331,7 @@ Partial Class AP_Frm
         Me.AbsentSemesterCombobox.FormattingEnabled = True
         Me.AbsentSemesterCombobox.Location = New System.Drawing.Point(3, 4)
         Me.AbsentSemesterCombobox.Name = "AbsentSemesterCombobox"
-        Me.AbsentSemesterCombobox.Size = New System.Drawing.Size(155, 24)
+        Me.AbsentSemesterCombobox.Size = New System.Drawing.Size(155, 27)
         Me.AbsentSemesterCombobox.TabIndex = 4
         '
         'AbsentListView
@@ -334,7 +340,7 @@ Partial Class AP_Frm
         Me.AbsentListView.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.AbsentListView.FullRowSelect = True
         Me.AbsentListView.GridLines = True
-        Me.AbsentListView.Location = New System.Drawing.Point(3, 34)
+        Me.AbsentListView.Location = New System.Drawing.Point(3, 31)
         Me.AbsentListView.MultiSelect = False
         Me.AbsentListView.Name = "AbsentListView"
         Me.AbsentListView.Size = New System.Drawing.Size(646, 344)
@@ -443,9 +449,9 @@ Partial Class AP_Frm
         Me.ScoreTabPage.Controls.Add(Me.ScoreLabel)
         Me.ScoreTabPage.Controls.Add(Me.ScoreSemesterCombobox)
         Me.ScoreTabPage.Controls.Add(Me.MidtermListView)
-        Me.ScoreTabPage.Location = New System.Drawing.Point(4, 25)
+        Me.ScoreTabPage.Location = New System.Drawing.Point(4, 28)
         Me.ScoreTabPage.Name = "ScoreTabPage"
-        Me.ScoreTabPage.Size = New System.Drawing.Size(652, 381)
+        Me.ScoreTabPage.Size = New System.Drawing.Size(652, 378)
         Me.ScoreTabPage.TabIndex = 5
         Me.ScoreTabPage.Text = "成績查詢"
         Me.ScoreTabPage.UseVisualStyleBackColor = True
@@ -455,7 +461,7 @@ Partial Class AP_Frm
         Me.ScoreLabel.AutoSize = True
         Me.ScoreLabel.Location = New System.Drawing.Point(164, 7)
         Me.ScoreLabel.Name = "ScoreLabel"
-        Me.ScoreLabel.Size = New System.Drawing.Size(0, 16)
+        Me.ScoreLabel.Size = New System.Drawing.Size(0, 19)
         Me.ScoreLabel.TabIndex = 5
         '
         'ScoreSemesterCombobox
@@ -464,7 +470,7 @@ Partial Class AP_Frm
         Me.ScoreSemesterCombobox.FormattingEnabled = True
         Me.ScoreSemesterCombobox.Location = New System.Drawing.Point(3, 4)
         Me.ScoreSemesterCombobox.Name = "ScoreSemesterCombobox"
-        Me.ScoreSemesterCombobox.Size = New System.Drawing.Size(155, 24)
+        Me.ScoreSemesterCombobox.Size = New System.Drawing.Size(155, 27)
         Me.ScoreSemesterCombobox.TabIndex = 4
         '
         'MidtermListView
@@ -473,7 +479,7 @@ Partial Class AP_Frm
         Me.MidtermListView.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.MidtermListView.FullRowSelect = True
         Me.MidtermListView.GridLines = True
-        Me.MidtermListView.Location = New System.Drawing.Point(0, 34)
+        Me.MidtermListView.Location = New System.Drawing.Point(0, 31)
         Me.MidtermListView.MultiSelect = False
         Me.MidtermListView.Name = "MidtermListView"
         Me.MidtermListView.ShowItemToolTips = True
@@ -522,9 +528,9 @@ Partial Class AP_Frm
         '
         Me.ClassTabPage.Controls.Add(Me.ClassSemesterCombobox)
         Me.ClassTabPage.Controls.Add(Me.ClassListView)
-        Me.ClassTabPage.Location = New System.Drawing.Point(4, 25)
+        Me.ClassTabPage.Location = New System.Drawing.Point(4, 28)
         Me.ClassTabPage.Name = "ClassTabPage"
-        Me.ClassTabPage.Size = New System.Drawing.Size(652, 381)
+        Me.ClassTabPage.Size = New System.Drawing.Size(652, 378)
         Me.ClassTabPage.TabIndex = 4
         Me.ClassTabPage.Text = "課表"
         Me.ClassTabPage.UseVisualStyleBackColor = True
@@ -535,7 +541,7 @@ Partial Class AP_Frm
         Me.ClassSemesterCombobox.FormattingEnabled = True
         Me.ClassSemesterCombobox.Location = New System.Drawing.Point(3, 4)
         Me.ClassSemesterCombobox.Name = "ClassSemesterCombobox"
-        Me.ClassSemesterCombobox.Size = New System.Drawing.Size(155, 24)
+        Me.ClassSemesterCombobox.Size = New System.Drawing.Size(155, 27)
         Me.ClassSemesterCombobox.TabIndex = 3
         '
         'ClassListView
@@ -544,7 +550,7 @@ Partial Class AP_Frm
         Me.ClassListView.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.ClassListView.FullRowSelect = True
         Me.ClassListView.GridLines = True
-        Me.ClassListView.Location = New System.Drawing.Point(0, 34)
+        Me.ClassListView.Location = New System.Drawing.Point(0, 31)
         Me.ClassListView.MultiSelect = False
         Me.ClassListView.Name = "ClassListView"
         Me.ClassListView.Scrollable = False
@@ -622,16 +628,16 @@ Partial Class AP_Frm
         Me.QuestionnaireTabPage.Controls.Add(Me.GroupBox3)
         Me.QuestionnaireTabPage.Controls.Add(Me.GroupBox2)
         Me.QuestionnaireTabPage.Controls.Add(Me.GroupBox1)
-        Me.QuestionnaireTabPage.Location = New System.Drawing.Point(4, 25)
+        Me.QuestionnaireTabPage.Location = New System.Drawing.Point(4, 28)
         Me.QuestionnaireTabPage.Name = "QuestionnaireTabPage"
-        Me.QuestionnaireTabPage.Size = New System.Drawing.Size(652, 381)
+        Me.QuestionnaireTabPage.Size = New System.Drawing.Size(652, 378)
         Me.QuestionnaireTabPage.TabIndex = 7
         Me.QuestionnaireTabPage.Text = "教學評量填寫"
         Me.QuestionnaireTabPage.UseVisualStyleBackColor = True
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(145, 223)
+        Me.Button1.Location = New System.Drawing.Point(203, 257)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(94, 40)
         Me.Button1.TabIndex = 4
@@ -645,9 +651,9 @@ Partial Class AP_Frm
         Me.GroupBox4.Controls.Add(Me.RadioButton17)
         Me.GroupBox4.Controls.Add(Me.RadioButton18)
         Me.GroupBox4.Controls.Add(Me.RadioButton19)
-        Me.GroupBox4.Location = New System.Drawing.Point(3, 167)
+        Me.GroupBox4.Location = New System.Drawing.Point(8, 190)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(442, 50)
+        Me.GroupBox4.Size = New System.Drawing.Size(517, 61)
         Me.GroupBox4.TabIndex = 3
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "年級"
@@ -655,9 +661,9 @@ Partial Class AP_Frm
         'RadioButton20
         '
         Me.RadioButton20.AutoSize = True
-        Me.RadioButton20.Location = New System.Drawing.Point(282, 22)
+        Me.RadioButton20.Location = New System.Drawing.Point(330, 26)
         Me.RadioButton20.Name = "RadioButton20"
-        Me.RadioButton20.Size = New System.Drawing.Size(74, 20)
+        Me.RadioButton20.Size = New System.Drawing.Size(90, 23)
         Me.RadioButton20.TabIndex = 4
         Me.RadioButton20.Text = "大學延畢"
         Me.RadioButton20.UseVisualStyleBackColor = True
@@ -666,9 +672,9 @@ Partial Class AP_Frm
         '
         Me.RadioButton16.AutoSize = True
         Me.RadioButton16.Checked = True
-        Me.RadioButton16.Location = New System.Drawing.Point(6, 22)
+        Me.RadioButton16.Location = New System.Drawing.Point(6, 26)
         Me.RadioButton16.Name = "RadioButton16"
-        Me.RadioButton16.Size = New System.Drawing.Size(62, 20)
+        Me.RadioButton16.Size = New System.Drawing.Size(75, 23)
         Me.RadioButton16.TabIndex = 3
         Me.RadioButton16.TabStop = True
         Me.RadioButton16.Text = "一年級"
@@ -677,9 +683,9 @@ Partial Class AP_Frm
         'RadioButton17
         '
         Me.RadioButton17.AutoSize = True
-        Me.RadioButton17.Location = New System.Drawing.Point(74, 22)
+        Me.RadioButton17.Location = New System.Drawing.Point(87, 26)
         Me.RadioButton17.Name = "RadioButton17"
-        Me.RadioButton17.Size = New System.Drawing.Size(62, 20)
+        Me.RadioButton17.Size = New System.Drawing.Size(75, 23)
         Me.RadioButton17.TabIndex = 2
         Me.RadioButton17.Text = "二年級"
         Me.RadioButton17.UseVisualStyleBackColor = True
@@ -687,9 +693,9 @@ Partial Class AP_Frm
         'RadioButton18
         '
         Me.RadioButton18.AutoSize = True
-        Me.RadioButton18.Location = New System.Drawing.Point(146, 22)
+        Me.RadioButton18.Location = New System.Drawing.Point(168, 26)
         Me.RadioButton18.Name = "RadioButton18"
-        Me.RadioButton18.Size = New System.Drawing.Size(62, 20)
+        Me.RadioButton18.Size = New System.Drawing.Size(75, 23)
         Me.RadioButton18.TabIndex = 1
         Me.RadioButton18.Text = "三年級"
         Me.RadioButton18.UseVisualStyleBackColor = True
@@ -697,9 +703,9 @@ Partial Class AP_Frm
         'RadioButton19
         '
         Me.RadioButton19.AutoSize = True
-        Me.RadioButton19.Location = New System.Drawing.Point(214, 22)
+        Me.RadioButton19.Location = New System.Drawing.Point(249, 26)
         Me.RadioButton19.Name = "RadioButton19"
-        Me.RadioButton19.Size = New System.Drawing.Size(62, 20)
+        Me.RadioButton19.Size = New System.Drawing.Size(75, 23)
         Me.RadioButton19.TabIndex = 0
         Me.RadioButton19.Text = "四年級"
         Me.RadioButton19.UseVisualStyleBackColor = True
@@ -715,9 +721,9 @@ Partial Class AP_Frm
         Me.GroupBox3.Controls.Add(Me.RadioButton8)
         Me.GroupBox3.Controls.Add(Me.RadioButton9)
         Me.GroupBox3.Controls.Add(Me.RadioButton10)
-        Me.GroupBox3.Location = New System.Drawing.Point(3, 59)
+        Me.GroupBox3.Location = New System.Drawing.Point(8, 69)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(442, 102)
+        Me.GroupBox3.Size = New System.Drawing.Size(517, 115)
         Me.GroupBox3.TabIndex = 2
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "學院"
@@ -725,9 +731,9 @@ Partial Class AP_Frm
         'RadioButton15
         '
         Me.RadioButton15.AutoSize = True
-        Me.RadioButton15.Location = New System.Drawing.Point(6, 74)
+        Me.RadioButton15.Location = New System.Drawing.Point(6, 84)
         Me.RadioButton15.Name = "RadioButton15"
-        Me.RadioButton15.Size = New System.Drawing.Size(98, 20)
+        Me.RadioButton15.Size = New System.Drawing.Size(120, 23)
         Me.RadioButton15.TabIndex = 8
         Me.RadioButton15.TabStop = True
         Me.RadioButton15.Text = "進修學院二技"
@@ -736,9 +742,9 @@ Partial Class AP_Frm
         'RadioButton12
         '
         Me.RadioButton12.AutoSize = True
-        Me.RadioButton12.Location = New System.Drawing.Point(98, 48)
+        Me.RadioButton12.Location = New System.Drawing.Point(117, 55)
         Me.RadioButton12.Name = "RadioButton12"
-        Me.RadioButton12.Size = New System.Drawing.Size(86, 20)
+        Me.RadioButton12.Size = New System.Drawing.Size(105, 23)
         Me.RadioButton12.TabIndex = 7
         Me.RadioButton12.TabStop = True
         Me.RadioButton12.Text = "進推處四技"
@@ -747,9 +753,9 @@ Partial Class AP_Frm
         'RadioButton13
         '
         Me.RadioButton13.AutoSize = True
-        Me.RadioButton13.Location = New System.Drawing.Point(190, 48)
+        Me.RadioButton13.Location = New System.Drawing.Point(228, 55)
         Me.RadioButton13.Name = "RadioButton13"
-        Me.RadioButton13.Size = New System.Drawing.Size(98, 20)
+        Me.RadioButton13.Size = New System.Drawing.Size(120, 23)
         Me.RadioButton13.TabIndex = 6
         Me.RadioButton13.TabStop = True
         Me.RadioButton13.Text = "進推處碩專班"
@@ -758,9 +764,9 @@ Partial Class AP_Frm
         'RadioButton14
         '
         Me.RadioButton14.AutoSize = True
-        Me.RadioButton14.Location = New System.Drawing.Point(294, 48)
+        Me.RadioButton14.Location = New System.Drawing.Point(354, 55)
         Me.RadioButton14.Name = "RadioButton14"
-        Me.RadioButton14.Size = New System.Drawing.Size(98, 20)
+        Me.RadioButton14.Size = New System.Drawing.Size(120, 23)
         Me.RadioButton14.TabIndex = 5
         Me.RadioButton14.TabStop = True
         Me.RadioButton14.Text = "進推處產碩班"
@@ -769,9 +775,9 @@ Partial Class AP_Frm
         'RadioButton11
         '
         Me.RadioButton11.AutoSize = True
-        Me.RadioButton11.Location = New System.Drawing.Point(6, 48)
+        Me.RadioButton11.Location = New System.Drawing.Point(6, 55)
         Me.RadioButton11.Name = "RadioButton11"
-        Me.RadioButton11.Size = New System.Drawing.Size(86, 20)
+        Me.RadioButton11.Size = New System.Drawing.Size(105, 23)
         Me.RadioButton11.TabIndex = 4
         Me.RadioButton11.TabStop = True
         Me.RadioButton11.Text = "進推處二技"
@@ -781,9 +787,9 @@ Partial Class AP_Frm
         '
         Me.RadioButton7.AutoSize = True
         Me.RadioButton7.Checked = True
-        Me.RadioButton7.Location = New System.Drawing.Point(6, 22)
+        Me.RadioButton7.Location = New System.Drawing.Point(6, 26)
         Me.RadioButton7.Name = "RadioButton7"
-        Me.RadioButton7.Size = New System.Drawing.Size(86, 20)
+        Me.RadioButton7.Size = New System.Drawing.Size(105, 23)
         Me.RadioButton7.TabIndex = 3
         Me.RadioButton7.TabStop = True
         Me.RadioButton7.Text = "日間部二技"
@@ -792,9 +798,9 @@ Partial Class AP_Frm
         'RadioButton8
         '
         Me.RadioButton8.AutoSize = True
-        Me.RadioButton8.Location = New System.Drawing.Point(98, 22)
+        Me.RadioButton8.Location = New System.Drawing.Point(117, 26)
         Me.RadioButton8.Name = "RadioButton8"
-        Me.RadioButton8.Size = New System.Drawing.Size(86, 20)
+        Me.RadioButton8.Size = New System.Drawing.Size(105, 23)
         Me.RadioButton8.TabIndex = 2
         Me.RadioButton8.TabStop = True
         Me.RadioButton8.Text = "日間部四技"
@@ -803,9 +809,9 @@ Partial Class AP_Frm
         'RadioButton9
         '
         Me.RadioButton9.AutoSize = True
-        Me.RadioButton9.Location = New System.Drawing.Point(190, 22)
+        Me.RadioButton9.Location = New System.Drawing.Point(228, 26)
         Me.RadioButton9.Name = "RadioButton9"
-        Me.RadioButton9.Size = New System.Drawing.Size(98, 20)
+        Me.RadioButton9.Size = New System.Drawing.Size(120, 23)
         Me.RadioButton9.TabIndex = 1
         Me.RadioButton9.TabStop = True
         Me.RadioButton9.Text = "日間部碩士班"
@@ -814,9 +820,9 @@ Partial Class AP_Frm
         'RadioButton10
         '
         Me.RadioButton10.AutoSize = True
-        Me.RadioButton10.Location = New System.Drawing.Point(294, 22)
+        Me.RadioButton10.Location = New System.Drawing.Point(354, 26)
         Me.RadioButton10.Name = "RadioButton10"
-        Me.RadioButton10.Size = New System.Drawing.Size(98, 20)
+        Me.RadioButton10.Size = New System.Drawing.Size(120, 23)
         Me.RadioButton10.TabIndex = 0
         Me.RadioButton10.Text = "日間部博士班"
         Me.RadioButton10.UseVisualStyleBackColor = True
@@ -827,9 +833,9 @@ Partial Class AP_Frm
         Me.GroupBox2.Controls.Add(Me.RadioButton5)
         Me.GroupBox2.Controls.Add(Me.RadioButton3)
         Me.GroupBox2.Controls.Add(Me.RadioButton4)
-        Me.GroupBox2.Location = New System.Drawing.Point(107, 3)
+        Me.GroupBox2.Location = New System.Drawing.Point(120, 3)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(338, 50)
+        Me.GroupBox2.Size = New System.Drawing.Size(405, 60)
         Me.GroupBox2.TabIndex = 1
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "學院"
@@ -837,9 +843,9 @@ Partial Class AP_Frm
         'RadioButton6
         '
         Me.RadioButton6.AutoSize = True
-        Me.RadioButton6.Location = New System.Drawing.Point(258, 22)
+        Me.RadioButton6.Location = New System.Drawing.Point(309, 26)
         Me.RadioButton6.Name = "RadioButton6"
-        Me.RadioButton6.Size = New System.Drawing.Size(74, 20)
+        Me.RadioButton6.Size = New System.Drawing.Size(90, 23)
         Me.RadioButton6.TabIndex = 3
         Me.RadioButton6.Text = "管理學院"
         Me.RadioButton6.UseVisualStyleBackColor = True
@@ -847,9 +853,9 @@ Partial Class AP_Frm
         'RadioButton5
         '
         Me.RadioButton5.AutoSize = True
-        Me.RadioButton5.Location = New System.Drawing.Point(154, 22)
+        Me.RadioButton5.Location = New System.Drawing.Point(183, 26)
         Me.RadioButton5.Name = "RadioButton5"
-        Me.RadioButton5.Size = New System.Drawing.Size(98, 20)
+        Me.RadioButton5.Size = New System.Drawing.Size(120, 23)
         Me.RadioButton5.TabIndex = 2
         Me.RadioButton5.Text = "人文社會學院"
         Me.RadioButton5.UseVisualStyleBackColor = True
@@ -858,9 +864,9 @@ Partial Class AP_Frm
         '
         Me.RadioButton3.AutoSize = True
         Me.RadioButton3.Checked = True
-        Me.RadioButton3.Location = New System.Drawing.Point(6, 22)
+        Me.RadioButton3.Location = New System.Drawing.Point(6, 26)
         Me.RadioButton3.Name = "RadioButton3"
-        Me.RadioButton3.Size = New System.Drawing.Size(74, 20)
+        Me.RadioButton3.Size = New System.Drawing.Size(90, 23)
         Me.RadioButton3.TabIndex = 1
         Me.RadioButton3.TabStop = True
         Me.RadioButton3.Text = "電資學院"
@@ -869,9 +875,9 @@ Partial Class AP_Frm
         'RadioButton4
         '
         Me.RadioButton4.AutoSize = True
-        Me.RadioButton4.Location = New System.Drawing.Point(86, 22)
+        Me.RadioButton4.Location = New System.Drawing.Point(102, 26)
         Me.RadioButton4.Name = "RadioButton4"
-        Me.RadioButton4.Size = New System.Drawing.Size(62, 20)
+        Me.RadioButton4.Size = New System.Drawing.Size(75, 23)
         Me.RadioButton4.TabIndex = 0
         Me.RadioButton4.Text = "工學院"
         Me.RadioButton4.UseVisualStyleBackColor = True
@@ -880,9 +886,9 @@ Partial Class AP_Frm
         '
         Me.GroupBox1.Controls.Add(Me.RadioButton2)
         Me.GroupBox1.Controls.Add(Me.RadioButton1)
-        Me.GroupBox1.Location = New System.Drawing.Point(3, 3)
+        Me.GroupBox1.Location = New System.Drawing.Point(8, 3)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(98, 50)
+        Me.GroupBox1.Size = New System.Drawing.Size(106, 60)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "性別"
@@ -890,9 +896,9 @@ Partial Class AP_Frm
         'RadioButton2
         '
         Me.RadioButton2.AutoSize = True
-        Me.RadioButton2.Location = New System.Drawing.Point(50, 22)
+        Me.RadioButton2.Location = New System.Drawing.Point(56, 26)
         Me.RadioButton2.Name = "RadioButton2"
-        Me.RadioButton2.Size = New System.Drawing.Size(38, 20)
+        Me.RadioButton2.Size = New System.Drawing.Size(45, 23)
         Me.RadioButton2.TabIndex = 1
         Me.RadioButton2.TabStop = True
         Me.RadioButton2.Text = "女"
@@ -902,9 +908,9 @@ Partial Class AP_Frm
         '
         Me.RadioButton1.AutoSize = True
         Me.RadioButton1.Checked = True
-        Me.RadioButton1.Location = New System.Drawing.Point(6, 22)
+        Me.RadioButton1.Location = New System.Drawing.Point(5, 26)
         Me.RadioButton1.Name = "RadioButton1"
-        Me.RadioButton1.Size = New System.Drawing.Size(38, 20)
+        Me.RadioButton1.Size = New System.Drawing.Size(45, 23)
         Me.RadioButton1.TabIndex = 0
         Me.RadioButton1.TabStop = True
         Me.RadioButton1.Text = "男"
@@ -912,12 +918,13 @@ Partial Class AP_Frm
         '
         'AP_Frm
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 19.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(660, 410)
         Me.Controls.Add(Me.TabControl)
         Me.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.MaximizeBox = False
         Me.Name = "AP_Frm"
