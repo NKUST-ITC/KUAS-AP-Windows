@@ -24,10 +24,10 @@ How to use ?
 歡迎 Clone [Source Code](https://github.com/kuastw/KUAS-AP-Windows.git) 自行編譯             
 工作環境 : Visual Studio 2013                
 
-如果你有更好的想法歡迎Fork             
-如果你有建議不會寫Code歡迎[聯絡我](https://www.facebook.com/HearSilent)                
+如果你有更好的想法歡迎 Fork             
+如果你有建議不會寫 Code 歡迎[聯絡我](https://www.facebook.com/HearSilent)                
   
-你也可以從這下載 : [Dropbox 載點](https://goo.gl/kzOSLz) (最後更新日期 : 105/01/04)           
+你也可以從這下載 : [Dropbox 載點](https://goo.gl/kzOSLz) (最後更新日期 : 105/12/31)           
 
 ##### .NET 需求 [4.0](http://www.microsoft.com/zh-tw/download/details.aspx?id=24872) (含以上)                      
               
