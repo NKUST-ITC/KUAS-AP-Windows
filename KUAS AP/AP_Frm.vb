@@ -383,13 +383,15 @@ Public Class AP_Frm
                     If Not (i = node.SelectNodes("//*[@id=""GridViewGroup1""]/tr").Count) Then
                         Dim name As String = node.SelectNodes(xpath + "/table/tr/td[1]/input")(0).Attributes("name").Value
                         Dim value As String
-                        If (i = 2) Then
+                        If (i = 2) Then ' 性別
                             value = ctl02
-                        ElseIf (i = 3) Then
+                        ElseIf (i = 3) Then ' 必修/選修
+                            value = 1
+                        ElseIf (i = 4) Then ' 學院
                             value = ctl04
-                        ElseIf (i = 4) Then
+                        ElseIf (i = 5) Then ' 學制
                             value = ctl05
-                        ElseIf (i = 5) Then
+                        ElseIf (i = 6) Then ' 年級
                             value = ctl06
                         Else
                             value = 4

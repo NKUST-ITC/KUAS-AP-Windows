@@ -11,14 +11,14 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyTitle("KUAS AP")> 
 <Assembly: AssemblyDescription("")> 
 <Assembly: AssemblyCompany("Silent")> 
-<Assembly: AssemblyProduct("KUAS AP")> 
-<Assembly: AssemblyCopyright("Copyright © Silent 2016")> 
+<Assembly: AssemblyProduct("KUAS AP")>
+<Assembly: AssemblyCopyright("Copyright © Silent 2017")>
 <Assembly: AssemblyTrademark("")> 
 
 <Assembly: ComVisible(False)>
 
 '下列 GUID 為專案公開 (Expose) 至 COM 時所要使用的 typelib ID
-<Assembly: Guid("59de963d-2213-4e45-a323-05ef79c51e08")> 
+<Assembly: Guid("59de963d-2213-4e45-a323-05ef79c51e08")>
 
 ' 組件的版本資訊是由下列四項值構成: 
 '
@@ -31,5 +31,5 @@ Imports System.Runtime.InteropServices
 ' 指定為預設值: 
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("1.9.12.31")> 
-<Assembly: AssemblyFileVersion("1.9.12.31")> 
+<Assembly: AssemblyVersion("1.10.6.2")>
+<Assembly: AssemblyFileVersion("1.10.6.2")>

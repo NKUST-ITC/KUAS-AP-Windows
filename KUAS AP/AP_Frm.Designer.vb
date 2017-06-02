@@ -140,18 +140,18 @@ Partial Class AP_Frm
         Me.BlackContextMenuStrip.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.BlackContextMenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.白名單WToolStripMenuItem, Me.黑名單BToolStripMenuItem})
         Me.BlackContextMenuStrip.Name = "ContextMenuStrip3"
-        Me.BlackContextMenuStrip.Size = New System.Drawing.Size(159, 56)
+        Me.BlackContextMenuStrip.Size = New System.Drawing.Size(153, 52)
         '
         '白名單WToolStripMenuItem
         '
         Me.白名單WToolStripMenuItem.Name = "白名單WToolStripMenuItem"
-        Me.白名單WToolStripMenuItem.Size = New System.Drawing.Size(158, 26)
+        Me.白名單WToolStripMenuItem.Size = New System.Drawing.Size(152, 24)
         Me.白名單WToolStripMenuItem.Text = "白名單 (&W)"
         '
         '黑名單BToolStripMenuItem
         '
         Me.黑名單BToolStripMenuItem.Name = "黑名單BToolStripMenuItem"
-        Me.黑名單BToolStripMenuItem.Size = New System.Drawing.Size(158, 26)
+        Me.黑名單BToolStripMenuItem.Size = New System.Drawing.Size(152, 24)
         Me.黑名單BToolStripMenuItem.Text = "黑名單 (&B)"
         '
         'ElectiveContextMenuStrip
@@ -159,12 +159,12 @@ Partial Class AP_Frm
         Me.ElectiveContextMenuStrip.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.ElectiveContextMenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.退選CToolStripMenuItem})
         Me.ElectiveContextMenuStrip.Name = "ElectiveContextMenuStrip"
-        Me.ElectiveContextMenuStrip.Size = New System.Drawing.Size(139, 30)
+        Me.ElectiveContextMenuStrip.Size = New System.Drawing.Size(133, 28)
         '
         '退選CToolStripMenuItem
         '
         Me.退選CToolStripMenuItem.Name = "退選CToolStripMenuItem"
-        Me.退選CToolStripMenuItem.Size = New System.Drawing.Size(138, 26)
+        Me.退選CToolStripMenuItem.Size = New System.Drawing.Size(132, 24)
         Me.退選CToolStripMenuItem.Text = "退選 (&C)"
         '
         'TeacherContextMenuStrip
@@ -172,18 +172,18 @@ Partial Class AP_Frm
         Me.TeacherContextMenuStrip.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.TeacherContextMenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem2, Me.ToolStripMenuItem3})
         Me.TeacherContextMenuStrip.Name = "ContextMenuStrip3"
-        Me.TeacherContextMenuStrip.Size = New System.Drawing.Size(159, 56)
+        Me.TeacherContextMenuStrip.Size = New System.Drawing.Size(153, 52)
         '
         'ToolStripMenuItem2
         '
         Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
-        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(158, 26)
+        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(152, 24)
         Me.ToolStripMenuItem2.Text = "白名單 (&W)"
         '
         'ToolStripMenuItem3
         '
         Me.ToolStripMenuItem3.Name = "ToolStripMenuItem3"
-        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(158, 26)
+        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(152, 24)
         Me.ToolStripMenuItem3.Text = "黑名單 (&B)"
         '
         'CourseContextMenuStrip
@@ -191,24 +191,24 @@ Partial Class AP_Frm
         Me.CourseContextMenuStrip.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.CourseContextMenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem1, Me.刪除DToolStripMenuItem, Me.全部刪除CToolStripMenuItem})
         Me.CourseContextMenuStrip.Name = "ContextMenuStrip1"
-        Me.CourseContextMenuStrip.Size = New System.Drawing.Size(169, 82)
+        Me.CourseContextMenuStrip.Size = New System.Drawing.Size(163, 76)
         '
         'ToolStripMenuItem1
         '
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(168, 26)
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(162, 24)
         Me.ToolStripMenuItem1.Text = "新增 (&A)"
         '
         '刪除DToolStripMenuItem
         '
         Me.刪除DToolStripMenuItem.Name = "刪除DToolStripMenuItem"
-        Me.刪除DToolStripMenuItem.Size = New System.Drawing.Size(168, 26)
+        Me.刪除DToolStripMenuItem.Size = New System.Drawing.Size(162, 24)
         Me.刪除DToolStripMenuItem.Text = "刪除 (&R)"
         '
         '全部刪除CToolStripMenuItem
         '
         Me.全部刪除CToolStripMenuItem.Name = "全部刪除CToolStripMenuItem"
-        Me.全部刪除CToolStripMenuItem.Size = New System.Drawing.Size(168, 26)
+        Me.全部刪除CToolStripMenuItem.Size = New System.Drawing.Size(162, 24)
         Me.全部刪除CToolStripMenuItem.Text = "全部刪除 (&C)"
         '
         'WhiteContextMenuStrip
@@ -216,41 +216,41 @@ Partial Class AP_Frm
         Me.WhiteContextMenuStrip.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.WhiteContextMenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.上移UToolStripMenuItem, Me.下移DToolStripMenuItem, Me.ToolStripSeparator1, Me.新增AToolStripMenuItem, Me.刪除DToolStripMenuItem1, Me.全部刪除CToolStripMenuItem1})
         Me.WhiteContextMenuStrip.Name = "ContextMenuStrip2"
-        Me.WhiteContextMenuStrip.Size = New System.Drawing.Size(169, 140)
+        Me.WhiteContextMenuStrip.Size = New System.Drawing.Size(163, 130)
         '
         '上移UToolStripMenuItem
         '
         Me.上移UToolStripMenuItem.Name = "上移UToolStripMenuItem"
-        Me.上移UToolStripMenuItem.Size = New System.Drawing.Size(168, 26)
+        Me.上移UToolStripMenuItem.Size = New System.Drawing.Size(162, 24)
         Me.上移UToolStripMenuItem.Text = "上移 (&U)"
         '
         '下移DToolStripMenuItem
         '
         Me.下移DToolStripMenuItem.Name = "下移DToolStripMenuItem"
-        Me.下移DToolStripMenuItem.Size = New System.Drawing.Size(168, 26)
+        Me.下移DToolStripMenuItem.Size = New System.Drawing.Size(162, 24)
         Me.下移DToolStripMenuItem.Text = "下移 (&D)"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(165, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(159, 6)
         '
         '新增AToolStripMenuItem
         '
         Me.新增AToolStripMenuItem.Name = "新增AToolStripMenuItem"
-        Me.新增AToolStripMenuItem.Size = New System.Drawing.Size(168, 26)
+        Me.新增AToolStripMenuItem.Size = New System.Drawing.Size(162, 24)
         Me.新增AToolStripMenuItem.Text = "新增 (&A)"
         '
         '刪除DToolStripMenuItem1
         '
         Me.刪除DToolStripMenuItem1.Name = "刪除DToolStripMenuItem1"
-        Me.刪除DToolStripMenuItem1.Size = New System.Drawing.Size(168, 26)
+        Me.刪除DToolStripMenuItem1.Size = New System.Drawing.Size(162, 24)
         Me.刪除DToolStripMenuItem1.Text = "刪除 (&R)"
         '
         '全部刪除CToolStripMenuItem1
         '
         Me.全部刪除CToolStripMenuItem1.Name = "全部刪除CToolStripMenuItem1"
-        Me.全部刪除CToolStripMenuItem1.Size = New System.Drawing.Size(168, 26)
+        Me.全部刪除CToolStripMenuItem1.Size = New System.Drawing.Size(162, 24)
         Me.全部刪除CToolStripMenuItem1.Text = "全部刪除 (&C)"
         '
         'CreditTabPage
@@ -726,7 +726,7 @@ Partial Class AP_Frm
         Me.GroupBox3.Size = New System.Drawing.Size(517, 115)
         Me.GroupBox3.TabIndex = 2
         Me.GroupBox3.TabStop = False
-        Me.GroupBox3.Text = "學院"
+        Me.GroupBox3.Text = "學制"
         '
         'RadioButton15
         '
